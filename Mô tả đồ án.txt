@@ -1,0 +1,16 @@
+Mô tả Đồ án website bán quần áo 
+1.	Danh mục sản phẩm
+	•	Phân loại quần áo 
+	•	Tìm kiếm và lọc sản phẩm
+
+2.	Chức năng giỏ hàng 
+	•	Thêm, xóa sản phẩm
+	•	Tính tổng tiền
+
+3.	Tài khoản người dung
+	•	Đăng ký, đăng nhập
+	•	Lịch sử đơn hang
+	•	Quản lý thông tin cá nhân
+
+4.	Bảo mật thông tin
+	•	Quản lý phiên làm việc 
