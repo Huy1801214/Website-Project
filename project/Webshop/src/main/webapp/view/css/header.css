@@ -1,0 +1,74 @@
+header {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.top-bar {
+    top: 0;
+    z-index: 1000;
+    background-color: #f0f0f0;
+    padding: 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dcdcdc;
+    position: absolute;
+}
+
+.left-section,
+.center-section,
+.right-section {
+    flex: 1;
+}
+
+.left-section {
+    text-align: left;
+}
+
+.center-section {
+    text-align: center;
+}
+
+.right-section {
+    text-align: right;
+}
+
+.contact-info {
+    font-size: 14px;
+    color: #333;
+}
+
+.promotions {
+    font-size: 14px;
+    color: #333;
+}
+
+.search-bar {
+    display: inline-flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #dcdcdc;
+    border-left: none;
+    background-color: #fff;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-bar button i {
+    color: #888;
+}
+
+
+

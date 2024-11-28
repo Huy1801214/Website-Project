@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+
+.content {
+    padding-top: 130px; /* Để tránh nội dung bị che bởi navbar */
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.login-container h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-container .forget-pass {
+    color: #000;
+}
+
+.login-container .register {
+    color: #000;
+}
+
+
+p {
+    text-align: center;
+}
+
+a {
+    color: #4c6baf;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+#login-form, #recovery-form {
+    display: none;
+}
+
