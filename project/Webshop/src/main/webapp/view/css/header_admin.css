@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #222;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+}
+
+.logo {
+    flex: 0 0 auto;
+}
+
+.nav-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: crimson;
+}
+
+.info-user {
+    flex: 0 0 auto;
+}
+
+.info-user a:hover {
+    color: crimson;
+}
+
+.info-user a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+}

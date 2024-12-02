@@ -36,15 +36,18 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-right: 5px;
 }
 .nav-icons a {
     text-decoration: none;
     color: black;
     font-size: 14px;
+    margin-right: 5px;
 }
 .nav-icons a:hover {
     text-decoration: underline;
 }
 .nav-icons i {
     font-size: 18px;
+    margin-right: 5px;
 }

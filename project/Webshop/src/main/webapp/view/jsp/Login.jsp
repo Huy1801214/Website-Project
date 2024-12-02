@@ -1,9 +1,9 @@
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/login.css">
@@ -11,7 +11,7 @@
 </head>
 <body>
 <!-- Header-->
-<header><c:import url="../viewshare/Header.jsp"/></header>
+<div><c:import url="../viewshare/Header.jsp"/></div>
 <!-- End Header-->
 
 <!-- Body-->
@@ -35,7 +35,7 @@
 </div>
 
 <!--Footer-->
-<c:import url="../viewshare/Footer.jsp"/>
+<div><c:import url="../viewshare/Footer.jsp"/></div>
 <!-- End Footer-->
 </body>
 </html>
