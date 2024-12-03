@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.stat {
+    flex: 1;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.stat h3 {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.stat p {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
+
+.stat-large {
+    flex: 2;
+}
+
+.stat-large p {
+    font-size: 24px;
+    color: #007bff;
+}
+
+.chart {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 400px;
+}
+
+.chart h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column;
+    }
+}

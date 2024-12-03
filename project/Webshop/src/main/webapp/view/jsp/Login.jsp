@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
@@ -30,7 +31,7 @@
     </form>
     <p>
         <a href="#" onclick="toggleForms(); return false;" class="forget-pass">Quên mật khẩu?</a> |
-        <a href="#" class="register">Đăng ký</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/Register.jsp" class="register">Đăng ký</a>
     </p>
 </div>
 

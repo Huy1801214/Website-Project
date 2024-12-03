@@ -19,9 +19,9 @@
     </div>
     <div class="nav-links">
         <a href="">Trang chủ</a>
-        <a href="">Tổng quan</a>
-        <a href="">Sản phẩm</a>
-        <a href="">Quản lý kho</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/Overview_admin.jsp">Tổng quan</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/Products_admin.jsp">Sản phẩm</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/Banner_admin.jsp">Quản lý Banner</a>
         <a href="">Thống kê</a>
     </div>
     <div class="info-user">
