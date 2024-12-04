@@ -3,17 +3,17 @@ package dao.database;
 import java.util.ArrayList;
 
 public interface DAOInterface<T> {
-    public ArrayList<T> selectAll();
+    ArrayList<T> selectAll();
 
-    public T selectById(int id);
+    T selectById(T t);
 
-    public int insert(T t);
+    int insert(T t);
 
-    public int insertAll(ArrayList<T> arr);
+    int insertAll(ArrayList<T> arr);
 
-    public int delete(T t);
+    int delete(T t);
 
-    public int deleteAll(ArrayList<T> arr);
+    int deleteAll(ArrayList<T> arr);
 
-    public int update(T t);
+    int update(T t);
 }

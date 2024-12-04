@@ -7,6 +7,14 @@ public class Ct_user {
     Date date_of_birth;
     String surname, lastname, username, gender, email, address, phone_num, password;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Ct_user(int id_user, String surname, String lastname, String username, String gender, String phone_num, String email, Date date_of_birth, String address, String password) {
         this.id_user = id_user;
         this.date_of_birth = date_of_birth;
@@ -31,8 +39,8 @@ public class Ct_user {
         this.id_user = id_user;
     }
 
-    public Date getDate_of_birth() {
-        return date_of_birth;
+    public java.sql.Date getDate_of_birth() {
+        return (java.sql.Date) date_of_birth;
     }
 
     public void setDate_of_birth(Date date_of_birth) {
