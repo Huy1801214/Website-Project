@@ -94,7 +94,7 @@ public class Ct_userDAO implements DAOInterface<Ct_user> {
 
             rs = preparedStatement.executeUpdate();
 
-            System.out.println("Có" + rs + "dong bi thay doi");
+            System.out.println("Có " + rs + "dong bi thay doi");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

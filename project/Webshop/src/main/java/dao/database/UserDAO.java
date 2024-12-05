@@ -20,11 +20,12 @@ public class UserDAO implements DAOInterface<User> {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
+                int id_user = resultSet.getInt("id_user");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 int id_role = resultSet.getInt("id_role");
 
-                users.add(new User(username, password, id_role));
+                users.add(new User(id_user, username, password, id_role));
 
             }
         } catch (SQLException e) {
@@ -43,28 +44,24 @@ public class UserDAO implements DAOInterface<User> {
     @Override
     public int insert(User user) {
         int rs = 0;
-        String query = "insert into user values(?,?,?)";
+        String query = "insert into user values(?,?,?,?)";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         ResultSet resultSet = null;
 
         try {
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setInt(1,user.getId_user());
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.setString(3, user.getPassword());
             // id_role mặc định la 1
-            preparedStatement.setInt(3, 1);
+            preparedStatement.setInt(4, 1);
 
             rs = preparedStatement.executeUpdate();
-
-            resultSet = preparedStatement.getGeneratedKeys();
-            if (resultSet.next()) {
-                user.setId_user(resultSet.getInt(1));
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DBConnect.close(resultSet, preparedStatement, DBConnect.getConnection());
         }
-        return 0;
+        return rs;
     }
 
     @Override

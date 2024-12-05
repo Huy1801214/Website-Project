@@ -10,6 +10,7 @@ import model.User;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Random;
 
 @WebServlet(name = "Register", value = "/Register")
 public class Register extends HttpServlet {
@@ -35,11 +36,12 @@ public class Register extends HttpServlet {
         if (ct_userDAO.isEmailExist(email)) {
             response.sendRedirect("error.jsp");
         }
+        Random rd = new Random();
+        int id_user = rd.nextInt(1000);
+        User user = new User(id_user, username, password, 1);
+        int isInsert = userDAO.insert(user);
 
-        User user = new User(username, password, 1);
-        int id_user = userDAO.insert(user);
-
-        if (id_user != -1) {
+        if (isInsert != -1) {
             Ct_user ct_user = new Ct_user(id_user, surname, lastname, username, gender, phone_num, email, date_of_birth, address, password);
             if (ct_userDAO.insert(ct_user) != -1) {
                 response.sendRedirect("view/jsp/Login.jsp");
