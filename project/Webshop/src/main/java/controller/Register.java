@@ -42,7 +42,7 @@ public class Register extends HttpServlet {
         if (id_user != -1) {
             Ct_user ct_user = new Ct_user(id_user, surname, lastname, username, gender, phone_num, email, date_of_birth, address, password);
             if (ct_userDAO.insert(ct_user) != -1) {
-                response.sendRedirect("Login.jsp");
+                response.sendRedirect("view/jsp/Login.jsp");
             } else {
                 response.sendRedirect("error.jsp");
             }

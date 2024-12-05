@@ -21,7 +21,7 @@
 <!-- End Header -->
 <div class="form-container">
     <h2>Đăng Ký</h2>
-    <form action="Register" method="post">
+    <form action="${pageContext.request.contextPath}/Register" method="post">
         <input placeholder="Họ" type="text" name="surname" required="required"/>
         <input placeholder="Tên" type="text" name="lastname" required="required"/>
         <input placeholder="Username" type="text" name="username" required="required"/>

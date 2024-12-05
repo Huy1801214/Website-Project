@@ -77,7 +77,7 @@ public class Ct_userDAO implements DAOInterface<Ct_user> {
     @Override
     public int insert(Ct_user ctUser) {
         int rs = 0;
-        String query = "insert into ct_user values(?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into ct_user values(?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         try {
             assert preparedStatement != null;

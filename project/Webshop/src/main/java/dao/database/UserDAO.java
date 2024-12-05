@@ -46,12 +46,12 @@ public class UserDAO implements DAOInterface<User> {
         String query = "insert into user values(?,?,?)";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         ResultSet resultSet = null;
-        int id_role = -1;
 
         try {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setInt(3, user.getId_role());
+            // id_role mặc định la 1
+            preparedStatement.setInt(3, 1);
 
             rs = preparedStatement.executeUpdate();
 
