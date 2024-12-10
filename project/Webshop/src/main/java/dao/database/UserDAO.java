@@ -17,6 +17,7 @@ public class UserDAO implements DAOInterface<User> {
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         ResultSet resultSet = null;
         try {
+            assert preparedStatement != null;
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -49,6 +50,7 @@ public class UserDAO implements DAOInterface<User> {
         ResultSet resultSet = null;
 
         try {
+            assert preparedStatement != null;
             preparedStatement.setInt(1,user.getId_user());
             preparedStatement.setString(2, user.getUsername());
             preparedStatement.setString(3, user.getPassword());
@@ -82,5 +84,29 @@ public class UserDAO implements DAOInterface<User> {
     @Override
     public int update(User user) {
         return 0;
+    }
+
+    public boolean checkLogin(String username, String password) {
+        String query = "select * from user where username=? and password=?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        ResultSet resultSet;
+
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return false;
     }
 }

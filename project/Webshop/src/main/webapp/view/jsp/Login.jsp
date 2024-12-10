@@ -18,13 +18,13 @@
 <!-- Body-->
 <div class="login-container">
     <h2 id="form-title">Đăng Nhập</h2>
-    <form id="login-form" method="post"> <!-- Thay đổi action cho phù hợp -->
+    <form id="login-form" method="post" action="${pageContext.request.contextPath}/Login"> <!-- Thay đổi action cho phù hợp -->
         <input type="email" id="email" name="email" placeholder="Email" required><br><br>
         <input type="password" id="password" name="password" placeholder="Password" required><br><br>
         <button type="submit">Đăng nhập</button>
     </form>
 
-    <form id="recovery-form" action="#" method="post">
+    <form id="recovery-form" action="${pageContext.request.contextPath}/ForgetPass" method="post">
         <label for="recovery-email">Nhập email của bạn:</label><br>
         <input type="email" id="recovery-email" name="recovery-email" required><br><br>
         <button type="submit">Gửi yêu cầu phục hồi</button>
