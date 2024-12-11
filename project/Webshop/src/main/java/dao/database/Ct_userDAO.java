@@ -174,14 +174,11 @@ public class Ct_userDAO implements DAOInterface<Ct_user> {
     public boolean isEmailExist(String email) {
         String query = "select * from ct_user where email = ?";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
-        ResultSet resultSet = null;
-
         try {
             preparedStatement.setString(1, email);
-            resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                return resultSet.getInt(1) > 0;
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet != null && resultSet.next() && resultSet.getInt(1) > 0) {
+                return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();

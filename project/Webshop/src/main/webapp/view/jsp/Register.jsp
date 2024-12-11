@@ -40,6 +40,11 @@
         <input type="submit" id="register_btn" value="ĐĂNG KÝ">
     </form>
     <a class="back-link" href="#"><i class="fas fa-arrow-left"></i>Quay lại trang chủ</a>
+
+    <%-- Hiển thị thông báo lỗi nếu có --%>
+    <c:if test="${not empty errorMessage}">
+        <p style="color: red;">${errorMessage}</p>
+    </c:if>
 </div>
 
 <!-- Footer -->

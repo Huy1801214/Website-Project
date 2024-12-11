@@ -51,7 +51,7 @@ public class UserDAO implements DAOInterface<User> {
 
         try {
             assert preparedStatement != null;
-            preparedStatement.setInt(1,user.getId_user());
+            preparedStatement.setInt(1, user.getId_user());
             preparedStatement.setString(2, user.getUsername());
             preparedStatement.setString(3, user.getPassword());
             // id_role mặc định la 1
@@ -61,7 +61,7 @@ public class UserDAO implements DAOInterface<User> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            DBConnect.close(resultSet, preparedStatement, DBConnect.getConnection());
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
         }
         return rs;
     }
@@ -86,27 +86,63 @@ public class UserDAO implements DAOInterface<User> {
         return 0;
     }
 
-    public boolean checkLogin(String username, String password) {
-        String query = "select * from user where username=? and password=?";
+    public User getUserIfLogin(String email, String password) {
+        String query = "select * from user where email=? and password=?";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         ResultSet resultSet;
 
         try {
             assert preparedStatement != null;
-            preparedStatement.setString(1, username);
+            preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
 
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                return resultSet.getInt(1) > 0;
+                User user = new User();
+                user.setId_user(resultSet.getInt("id_user"));
+                user.setUsername(resultSet.getString("email"));
+                user.setPassword(resultSet.getString("password"));
+                user.setId_role(resultSet.getInt("id_role"));
+
+                return user;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
-        finally {
+        } finally {
             DBConnect.close(null, preparedStatement, DBConnect.getConnection());
         }
-        return false;
+        return null;
+    }
+
+    public User selectByEmail(String email) {
+        User user = null;
+        String query = "select * from user where email=?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        ResultSet resultSet;
+
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id_user");
+                String password = resultSet.getString("password");
+                int id_role = resultSet.getInt("id_role");
+
+                user = new User(id, email, password, id_role);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return user;
+    }
+
+    // viet them ham update cho ct_user
+    public void updatePassword(int idUser, String password) {
+        String query = "update user set password=? where id_user=?";
     }
 }

@@ -7,6 +7,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Ct_user;
 import model.User;
+import util.Encrypt;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -32,13 +33,16 @@ public class Register extends HttpServlet {
         Date date_of_birth = Date.valueOf(request.getParameter("date_of_birth"));
         String address = request.getParameter("address");
         String password = request.getParameter("password");
+        password = Encrypt.encrypt(password);
 
         if (ct_userDAO.isEmailExist(email)) {
-            response.sendRedirect("error.jsp");
+            request.setAttribute("errorMessage", "Email đã tồn tại. Vui lòng nhập lại email khác.");
+            request.getRequestDispatcher("view/jsp/Register.jsp").forward(request, response);
+            return;
         }
         Random rd = new Random();
         int id_user = rd.nextInt(1000);
-        User user = new User(id_user, username, password, 1);
+        User user = new User(id_user, email, password, 1);
         int isInsert = userDAO.insert(user);
 
         if (isInsert != -1) {
@@ -46,10 +50,10 @@ public class Register extends HttpServlet {
             if (ct_userDAO.insert(ct_user) != -1) {
                 response.sendRedirect("view/jsp/Login.jsp");
             } else {
-                response.sendRedirect("error.jsp");
+                response.sendRedirect("view/jsp/Register.jsp");
             }
         } else {
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("view/jsp/Register.jsp");
         }
     }
 }
