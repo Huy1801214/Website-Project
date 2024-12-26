@@ -52,7 +52,7 @@ public class UserDAO implements DAOInterface<User> {
         try {
             assert preparedStatement != null;
             preparedStatement.setInt(1, user.getId_user());
-            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getPassword());
             // id_role mặc định la 1
             preparedStatement.setInt(4, 1);
@@ -101,7 +101,7 @@ public class UserDAO implements DAOInterface<User> {
             if (resultSet.next()) {
                 User user = new User();
                 user.setId_user(resultSet.getInt("id_user"));
-                user.setUsername(resultSet.getString("email"));
+                user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
                 user.setId_role(resultSet.getInt("id_role"));
 

@@ -1,0 +1,183 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+}
+
+#product_advertising {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#product_advertising img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.main-content {
+    margin-top: 120px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.product > div {
+    margin: 10px;
+    width: 20%;
+    min-width: 200px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product_infor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product_name {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product_price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.product_price > div {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.old_price_product {
+    text-decoration: line-through;
+    color: #888;
+}
+
+#everyday_art {
+    position: relative;
+    padding: 40px 0;
+    margin: 60px 0;
+}
+
+#everyday_art div:last-child {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    text-align: right;
+}
+
+#everyday_art div:last-child:first-line {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 15px;
+    display: block;
+}
+
+#everyday_art div:first-child {
+    width: 60%;
+}
+
+@media (max-width: 768px) {
+    #everyday_art {
+        flex-direction: column;
+    }
+
+    #everyday_art div:last-child,
+    #everyday_art div:first-child {
+        position: static;
+        width: 100%;
+        transform: none;
+        text-align: left;
+        padding: 20px;
+    }
+}
+
+#made_different {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+#made_different .title {
+    width: 200px;
+    text-align: left;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#made_different #left,
+#made_different #center,
+#made_different #right {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#made_different img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    #made_different {
+        flex-direction: column;
+    }
+
+    #made_different .title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
