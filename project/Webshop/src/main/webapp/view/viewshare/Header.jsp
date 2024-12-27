@@ -25,12 +25,6 @@
                     22130099@gmail.com | Hotline: 123 456 789
                 </div>
             </div>
-            <div class="center-section">
-                <div class="promotions">
-                    Đơn từ 300k - Tặng Tote | Đơn từ 499k - Tặng Figure | Đơn từ 799k - Tặng Áo thun trơn | Đơn từ
-                    1,199k - Tặng Figure + Áo thun trơn
-                </div>
-            </div>
             <div class="right-section">
                 <div class="search-bar">
                     <label>
@@ -45,7 +39,8 @@
 
 <div class="navbar">
     <div class="logo">
-        <img alt="Company Logo" height="50" src="#" width="50"/>
+        <a href="${pageContext.request.contextPath}/view/jsp/index.jsp"><img alt="Company Logo" height="50" src="#"
+                                                                             width="50"/></a>
     </div>
     <div class="nav-links">
         <a href="#">ALL</a>
@@ -57,9 +52,11 @@
         <a href="#">QUẦN</a>
         <a href="#">PHỤ KIỆN</a></div>
     <div class="nav-icons">
-        <a href="#"><i class="fas fa-user"></i>Đăng nhập</a>
-        <a href="#"><i class="fas fa-shopping-bag"></i>0</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/Login.jsp"><i class="fas fa-user"></i>Đăng nhập</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp"><i class="fas fa-shopping-bag"></i><span
+                id="cart-count">0</span></a>
     </div>
 </div>
+<script src="../js/header.js"></script>
 </body>
 </html>

@@ -11,22 +11,17 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #dcdcdc;
+    border-bottom: 2px solid black;
     position: sticky;
 }
 
 .left-section,
-.center-section,
 .right-section {
     flex: 1;
 }
 
 .left-section {
     text-align: left;
-}
-
-.center-section {
-    text-align: center;
 }
 
 .right-section {

@@ -1,0 +1,274 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.infor_product {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 80px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+}
+
+.infor_product > div {
+    width: 50%;
+    padding: 15px;
+}
+
+.infor_product > div:first-child {
+    padding-right: 30px;
+}
+
+.title {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.price {
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.product-container {
+    margin: 20px auto;
+    overflow-x: hidden; /* Hide scrollbar */
+    max-width: 1000px; /* Container for the products */
+    position: relative;
+    padding: 10px;
+}
+
+.product {
+    display: flex;
+    justify-content: flex-start;
+    max-width: fit-content; /* Make products container width to be determined by the items inside it*/
+    cursor: grab; /* Change the cursor on hover to grab*/
+    padding: 10px;
+    transition: transform 0.2s ease; /* Add transition for smooth drag */
+}
+
+.product.dragging {
+    cursor: grabbing; /*Change cursor during drag*/
+}
+
+.product > div {
+    width: 250px; /* Increased the width of the products for more space */
+    margin: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.product_infor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product_name {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.product_price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+.product_price > div {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.old_price_product {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Modified button styles */
+button {
+    padding: 12px 18px;
+    margin: 5px;
+    border: 1px solid #333; /* Added border */
+    background-color: #fff; /* Changed background to white */
+    color: #333; /* Changed text color to black */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 0; /* Removed rounded edges */
+    font-size: 16px;
+    text-transform: uppercase; /* All uppercase letters*/
+}
+
+button:hover {
+    background-color: #333; /* Background on hover black */
+    color: white; /* Text color on hover white */
+}
+
+/* Modified button styles for Mua Ngay button */
+.buy-button {
+    background-color: #fff; /* Set to white initially */
+    color: #333;
+    border: 1px solid #333; /* Setting black border*/
+}
+
+.buy-button:hover {
+    background-color: #333;
+    color: white;
+}
+
+/* Modified button styles for Them Gio button */
+.add-button {
+    background-color: #333;
+    color: white;
+    border: none; /* Remove border */
+}
+
+.add-button:hover {
+    background-color: #555;
+}
+
+input[type="radio"] {
+    margin: 5px;
+    transform: scale(1.2);
+}
+
+.color-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-selector input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    position: relative;
+}
+
+.color-selector input[type="radio"]:checked:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.color-selector input[type="radio"][value="white"] {
+    border-color: #ddd;
+}
+
+.color-selector input[type="radio"][value="white"]:checked:after {
+    background-color: white;
+}
+
+.color-selector input[type="radio"][value="black"] {
+    background-color: black;
+}
+
+.color-selector input[type="radio"][value="black"]:checked:after {
+    background-color: white;
+}
+
+.size-buttons {
+    display: flex;
+}
+
+.size-buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border: 1px solid #333;
+    background-color: white;
+    color: black;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.size-buttons button:hover {
+    background-color: #333;
+    color: white;
+}
+
+/* Accordion styles */
+.accordion {
+    border-top: 1px solid #ddd;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.accordion-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    position: relative; /* Added to position the arrow */
+    color: #333;
+}
+
+.accordion-header:hover {
+    background-color: #f8f8f8;
+}
+
+.accordion-header::after {
+    content: '\25BE'; /* Down arrow character */
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+    position: absolute; /* Position the arrow */
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.accordion-header.active::after {
+    transform: translateY(-50%) rotate(180deg); /* Rotate the arrow 180 degrees for "open" state */
+}
+
+.accordion-content {
+    padding: 10px;
+    display: none;
+    background-color: #f8f8f8; /* Optional background color */
+}
+
+.accordion-content.show {
+    display: block;
+}
