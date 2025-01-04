@@ -12,7 +12,7 @@
 </head>
 <body>
 <!-- Header-->
-<div><c:import url="../viewshare/Header.jsp"/></div>
+<div id="header-container"><c:import url="../viewshare/Header.jsp"/></div>
 <!-- End Header-->
 
 <!-- Body-->

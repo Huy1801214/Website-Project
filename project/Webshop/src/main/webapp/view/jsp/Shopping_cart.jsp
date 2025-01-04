@@ -24,9 +24,9 @@
 
 <div class="container">
     <div class="breadcrumb">
-        <a href="#">Trang chủ</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/index.jsp">Trang chủ</a>
         /
-        <a href="#">Giỏ hàng</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp">Giỏ hàng</a>
     </div>
     <div class="cart-title">
         Giỏ hàng

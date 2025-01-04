@@ -1,0 +1,278 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#header-container {
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+}
+
+main.checkout-page {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+section.shipping-info,
+section.order-summary,
+.payment-info {
+    flex: 1;
+    padding: 20px;
+}
+section.shipping-info {
+    margin-right: 20px;
+}
+.payment-info {
+    margin-right: 20px;
+}
+section.order-summary {
+    background-color: white;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+.checkout-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: none;
+}
+.checkout-header h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+.checkout-header nav a {
+    color: #999;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 14px;
+}
+.checkout-header nav a.active {
+    font-weight: bold;
+    color: #333;
+}
+.checkout-header nav span {
+    margin: 0 5px;
+    color: #999;
+    font-size: 14px;
+}
+section.shipping-info h2,
+section.order-summary h2,
+.payment-info h2 {
+    margin-bottom: 20px;
+}
+section.shipping-info .user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+section.shipping-info .user-info i {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #888;
+}
+section.shipping-info .user-info-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+section.shipping-info .user-info-text a {
+    color: #888;
+    text-decoration: none;
+}
+section.shipping-info .user-info-text a:hover {
+    color: #555;
+    text-decoration: none;
+}
+section.shipping-info .form-group {
+    margin-bottom: 15px;
+}
+section.shipping-info label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+section.shipping-info input[type="text"],
+section.shipping-info select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+section.shipping-info .address-group {
+    display: flex;
+    gap: 5px;
+}
+section.shipping-info .address-group select {
+    flex: 1;
+}
+section.shipping-info .cart-next-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+section.shipping-info .back-to-cart a,
+.payment-info .back-to-cart a{
+    color: #888;
+    text-decoration: none;
+    display: block;
+}
+section.shipping-info .back-to-cart a:hover,
+.payment-info .back-to-cart a:hover {
+    color: #555;
+    text-decoration: none;
+}
+section.shipping-info .next-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+section.shipping-info .next-button:hover{
+    background-color: #333;
+}
+.payment-info .shipping-methods,
+.payment-info .payment-methods {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+.payment-info .shipping-methods label,
+.payment-info .payment-methods label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+}
+
+.payment-info .payment-methods img{
+    height: 25px;
+    width: 25px;
+}
+.payment-info .shipping-methods .price{
+    margin-left: auto;
+    color: #555;
+}
+.payment-info #complete-order {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-left: auto;
+    display: block;
+    margin-top: 20px;
+}
+
+.payment-info #complete-order:hover {
+    background-color: #0056b3;
+}
+.payment-info .payment-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.payment-info .shipping-methods label span:first-child,
+.payment-info .payment-methods label span:first-child {
+    flex: 1;
+    text-align: left;
+}
+
+section.order-summary .item{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e1e1e1;
+    padding: 10px 0;
+}
+section.order-summary .item img {
+    height: 70px;
+    width: 70px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+section.order-summary .item-info{
+    flex: 1;
+}
+section.order-summary .item-info h3{
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+section.order-summary .item-info p{
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+section.order-summary .price {
+    font-weight: bold;
+    color: #333;
+    margin-left: auto;
+}
+section.order-summary .discount {
+    display: flex;
+    margin: 20px 0;
+}
+section.order-summary .discount input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    box-sizing: border-box;
+}
+section.order-summary .discount button {
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+section.order-summary .discount button:hover {
+    background-color: #333;
+}
+section.order-summary .summary-info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+section.order-summary .summary-info div {
+    display: flex;
+    justify-content: space-between;
+}
+section.order-summary .summary-info .total span:first-child{
+    font-weight: bold;
+}
+section.order-summary .summary-info .total span:last-child{
+    font-weight: bold;
+    font-size: 20px;
+}
