@@ -21,26 +21,38 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        password = Encrypt.encrypt(password);
-        User user = userDAO.getUserIfLogin(email, password);
+        User user = userDAO.getUserIfLogin(email, Encrypt.encrypt(password));
 
         if(user != null) {
-            HttpSession session = request.getSession();
+            // thong tin hop le thi tra ve 1 session
+            HttpSession session = request.getSession(true); // true la tao session neu chưa có, lấy session nếu có
             session.setAttribute("user", user);
-            // set thoi gian cho moi session
-            session.setMaxInactiveInterval(1800);
 
-            System.out.println("Session id: " + session.getId());
+            //Kiểm tra cookie consent người dùng có accept kh (giong header trong raf)
+            boolean useCookie = true;
+            String cookieConsent = request.getHeader("cookieConsent");
+            if(cookieConsent != null && cookieConsent.equals("false")) {
+                useCookie = false;
+            }
 
-            if(user.getId_role() == 1) {
-                response.sendRedirect("view/jsp/index.jsp");
-            } else if(user.getId_role() == 0) {
-                response.sendRedirect("view/jsp/Overview_admin.jsp");
+            // neu dong y thi dùng cookie de quan ly session
+            if(useCookie) {
+                String sessionId = session.getId();
+                Cookie cookie = new Cookie("sessionId", sessionId);
+                cookie.setHttpOnly(true);
+                cookie.setSecure(request.isSecure());
+                cookie.setPath("/");
+                response.addCookie(cookie);
+                response.sendRedirect("/Webshop/sessionLogin");
+            } else {
+                // neu khong dong y dung url rewriting
+                String redirectUrl = response.encodeRedirectURL("/Webshop/sessionLogin");
+                response.sendRedirect(redirectUrl);
             }
 
         } else {
-            request.setAttribute("error", "Invalid username or password");
-            response.sendRedirect("error.jsp");
+            request.setAttribute("error", "Tên đăng nhập và mật khẩu không khả dụng");
+            request.getRequestDispatcher("view/jsp/Login.jsp").forward(request, response);
         }
     }
 }

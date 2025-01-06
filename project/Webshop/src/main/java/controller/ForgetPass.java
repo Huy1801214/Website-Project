@@ -18,21 +18,21 @@ public class ForgetPass extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");
+        String email = request.getParameter("recovery-email");
+        System.out.println("request lay email " + email);
 
         User user = userDAO.selectByEmail(email);
-        try {
-            if (user != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("userQMK", user);
-                session.setMaxInactiveInterval(90);
-                response.sendRedirect("view/jsp/ResetPassword.jsp");
-            } else {
-                request.setAttribute("errorMessage", "Email không tồn tại. Vui lòng nhập lại email khác.");
-                request.getRequestDispatcher("view/jsp/Login.jsp").forward(request, response);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        System.out.println(user.getEmail() + " id " + user.getId_user());
+        if (user != null) {
+            HttpSession session = request.getSession();
+            System.out.println( "forget " + session.getId());
+            session.setAttribute("userQMK", user);
+            session.setMaxInactiveInterval(90);
+            response.sendRedirect("view/jsp/ResetPassword.jsp");
+        } else {
+            request.setAttribute("errorMessage", "Email không tồn tại. Vui lòng nhập lại email khác.");
+            System.out.println("loi");
+            request.getRequestDispatcher("view/jsp/Login.jsp").forward(request, response);
         }
     }
 }

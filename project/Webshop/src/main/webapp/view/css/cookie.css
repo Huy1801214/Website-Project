@@ -1,0 +1,44 @@
+#cookie-banner {
+    position: fixed;
+    bottom: -150px; /* Bắt đầu ẩn */
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: bottom 0.5s ease; /* Thêm transition */
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+#cookie-banner p {
+    margin: 0;
+    padding: 10px 0;
+}
+
+#cookie-banner.visible {
+    bottom: 0; /* Hiển thị */
+}
+
+
+#accept-cookie-btn, #reject-cookie-btn {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#accept-cookie-btn:hover, #reject-cookie-btn:hover {
+    background-color: #444;
+}

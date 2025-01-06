@@ -52,7 +52,17 @@
         <a href="#">QUẦN</a>
         <a href="#">PHỤ KIỆN</a></div>
     <div class="nav-icons">
-        <a href="${pageContext.request.contextPath}/view/jsp/Login.jsp"><i class="fas fa-user"></i>Đăng nhập</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/Login.jsp">
+            <%-- Hiển thị username nếu có user trong session --%>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <c:out value="${sessionScope.user.username}"/><i class="fas fa-user"></i>
+                </c:when>
+                <c:otherwise>
+                    Đăng nhập <i class="fas fa-user"></i>
+                </c:otherwise>
+            </c:choose>
+        </a>
         <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp"><i class="fas fa-shopping-bag"></i><span
                 id="cart-count">0</span></a>
     </div>

@@ -26,9 +26,9 @@
         <input placeholder="Tên" type="text" name="lastname" required="required"/>
         <input placeholder="Username" type="text" name="username" required="required"/>
         <div class="gender">
-            <input id="female" name="gender" type="radio" required="required" checked="checked"/>
+            <input id="female" name="gender" type="radio" required="required" checked="checked" value="Nữ"/>
             <label for="female">Nữ</label>
-            <input id="male" name="gender" type="radio"/>
+            <input id="male" name="gender" type="radio" value="Nam"/>
             <label for="male">Nam</label>
         </div>
         <input placeholder="Phone number" type="text" name="phone_num" required="required"/>

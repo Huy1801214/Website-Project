@@ -4,51 +4,65 @@ body {
     background-color: #f4f4f4;
 }
 
+.content {
+    padding-top: 130px; /* Để tránh nội dung bị che bởi navbar */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px; /* Thêm khoảng cách dưới tiêu đề */
+}
+
 .reset-form {
     max-width: 400px;
     margin: 50px auto;
+    display: flex; /* Thêm display flex để căn giữa */
+    flex-direction: column; /* Thêm flex direction */
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
-
-.content {
-    padding-top: 130px; /* Để tránh nội dung bị che bởi navbar */
-}
-h2 {
-    text-align: center;
-}
-
-.reset-form input[type="text"] {
+/* Style form input */
+.reset-form input[type="password"] {
+    display: block; /* Cho phép margin hoạt động */
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Thêm khoảng cách */
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
+.reset-form input[type="password"]:focus {
+    border-color: black;
+    outline: none; /* tắt đi outline mặc định của browser */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+/* Style button */
 .reset-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
+    display: block; /* để có thể dùng margin top, bottom */
+    width: 100%; /* Làm cho nút chiếm toàn bộ chiều rộng của form */
+    padding: 12px 20px;
+    background-color: black;
     color: #fff;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 10px 0; /* Thêm margin để tạo khoảng cách với các input và phần tử khác*/
 }
 
 .reset-form button:hover {
-    background-color: #555;
+    background-color: #333333; /* Màu nền đậm hơn khi hover */
 }
-
-/* Đảm bảo form responsive trên mobile */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 600px) {
     .reset-form {
         max-width: 90%;
-        margin: 50px auto;
+        margin: 20px auto;
     }
 }

@@ -22,9 +22,12 @@
 <!-- Body -->
 <h2>Đổi mật khẩu</h2>
 <div class="reset-form">
-    <form action="${pageContext.request.contextPath}/ResetPass.java" method="post">
-        <input type="text" placeholder="Nhập mật khẩu mới của bạn" name="password" required="required">
-        <input type="text" placeholder="Nhập lại mật khẩu mới của bạn" name="confirmPassword" required="required">
+    <form action="${pageContext.request.contextPath}/ResetPass" method="post">
+        <c:if test="${not empty error}">
+            <p style=" color: red">${error}</p>
+        </c:if>
+        <input type="password" placeholder="Nhập mật khẩu mới của bạn" name="password" required="required">
+        <input type="password" placeholder="Nhập lại mật khẩu mới của bạn" name="confirmPassword" required="required">
         <button>Đổi mật khẩu</button>
     </form>
 </div>

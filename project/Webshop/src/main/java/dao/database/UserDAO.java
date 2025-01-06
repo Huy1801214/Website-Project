@@ -10,10 +10,29 @@ import java.util.ArrayList;
 
 public class UserDAO implements DAOInterface<User> {
 
+    public static boolean isEmailExist(String email) {
+        String query = "select 1 from users where email = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        ResultSet resultSet = null;
+
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(resultSet, preparedStatement, DBConnect.getConnection());
+        }
+        return false;
+    }
+
     @Override
     public ArrayList<User> selectAll() {
         ArrayList<User> users = new ArrayList<>();
-        String query = "select * from user";
+        String query = "select * from users";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         ResultSet resultSet = null;
         try {
@@ -25,8 +44,14 @@ public class UserDAO implements DAOInterface<User> {
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 int id_role = resultSet.getInt("id_role");
+                String surname = resultSet.getString("surname");
+                String lastname = resultSet.getString("lastname");
+                String email = resultSet.getString("email");
+                String phone_num = resultSet.getString("phone_num");
+                String address = resultSet.getString("address");
+                String gender = resultSet.getString("gender");
 
-                users.add(new User(id_user, username, password, id_role));
+                users.add(new User(id_user, id_role, surname, lastname, username, gender, phone_num, address, email, password));
 
             }
         } catch (SQLException e) {
@@ -45,17 +70,21 @@ public class UserDAO implements DAOInterface<User> {
     @Override
     public int insert(User user) {
         int rs = 0;
-        String query = "insert into user values(?,?,?,?)";
+        String query = "insert into users (id_role, surname, lastname, username, gender, phone_num, address, email, password) values(?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
-        ResultSet resultSet = null;
 
         try {
             assert preparedStatement != null;
-            preparedStatement.setInt(1, user.getId_user());
-            preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getPassword());
-            // id_role mặc định la 1
-            preparedStatement.setInt(4, 1);
+            preparedStatement.setInt(1, user.getId_role());
+            preparedStatement.setString(2, user.getSurname());
+            preparedStatement.setString(3, user.getLastname());
+            preparedStatement.setString(4, user.getUsername());
+            preparedStatement.setString(5, user.getGender());
+            preparedStatement.setString(6, user.getPhone_num());
+            preparedStatement.setString(7, user.getAddress());
+            preparedStatement.setString(8, user.getEmail());
+            preparedStatement.setString(9, user.getPassword());
+
 
             rs = preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -87,7 +116,7 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     public User getUserIfLogin(String email, String password) {
-        String query = "select * from user where email=? and password=?";
+        String query = "select * from users where email=? and password=?";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         ResultSet resultSet;
 
@@ -108,7 +137,7 @@ public class UserDAO implements DAOInterface<User> {
                 return user;
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } finally {
             DBConnect.close(null, preparedStatement, DBConnect.getConnection());
         }
@@ -116,8 +145,8 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     public User selectByEmail(String email) {
-        User user = null;
-        String query = "select * from user where email=?";
+        User user = new User();
+        String query = "select * from users where email=?";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         ResultSet resultSet;
 
@@ -127,22 +156,40 @@ public class UserDAO implements DAOInterface<User> {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                int id = resultSet.getInt("id_user");
-                String password = resultSet.getString("password");
-                int id_role = resultSet.getInt("id_role");
-
-                user = new User(id, email, password, id_role);
+                user.setId_user(resultSet.getInt("id_user"));
+                user.setId_role(resultSet.getInt("id_role"));
+                user.setSurname(resultSet.getString("surname"));
+                user.setLastname(resultSet.getString("lastname"));
+                user.setGender(resultSet.getString("gender"));
+                user.setPhone_num(resultSet.getString("phone_num"));
+                user.setAddress(resultSet.getString("address"));
+                user.setPassword(resultSet.getString("password"));
+                user.setUsername(resultSet.getString("username"));
+                user.setEmail(email);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } finally {
             DBConnect.close(null, preparedStatement, DBConnect.getConnection());
         }
+        System.out.println(user.getId_user());
         return user;
     }
 
     // viet them ham update cho ct_user
-    public void updatePassword(int idUser, String password) {
-        String query = "update user set password=? where id_user=?";
+    public boolean updatePassword(int userId, String password) throws SQLException {
+        String query = "update users set password=? where id_user=?";
+        try (PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query)) {
+            preparedStatement.setString(1, password);
+            preparedStatement.setInt(2, userId);
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
+        }
+    }
+
+    public static void main(String[] args) {
+        UserDAO dao = new UserDAO();
+        User user = dao.selectByEmail("vyvy@gmail.com");
+        System.out.println(user.getEmail());
     }
 }
