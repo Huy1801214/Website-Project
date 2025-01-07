@@ -35,23 +35,29 @@
     </a>
 </div>
 <div class="main-content">
-    <div class="title">NEW IN</div>
-    <div class="product">
-        <c:forEach var="product" items="${products}"> <!-- định nghĩa biến product là 1 product lấy ra từ 1 list các products trong LoadProduct -->
-        <div>
-            <a href="${pageContext.request.contextPath}/view/jsp/Product.jsp">
-                <img src="${product.img}" style="width: 270px; height: 300px" alt="">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">${product.product_name}</div>
-                <div class="product_price">
-                    <!-- tiền : currency,  maxFractionDigits="0" không hiển thị số thập phân-->
-                    <div><fmt:formatNumber value="${product.out_price}" type="currency" currencySymbol="đ" maxFractionDigits="0"></fmt:formatNumber> </div>
+    <div class="title">COLLECTIONS</div>
+
+    <div class="slideshow-container">
+        <div class="slides">
+            <c:forEach var="product" items="${products}">
+                <div class="slide">
+                    <a href="${pageContext.request.contextPath}/view/jsp/Product.jsp">
+                        <img src="${product.img}" style="width: 270px; height: 300px" alt="">
+                    </a>
+                    <div class="product_infor">
+                        <div class="product_name">${product.product_name}</div>
+                        <div class="product_price">
+                            <div><fmt:formatNumber value="${product.out_price}" type="currency" currencySymbol="đ"
+                                                   maxFractionDigits="0"></fmt:formatNumber></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
-        </c:forEach>
+        <button class="prev-button"><</button>
+        <button class="next-button">></button>
     </div>
+
 
     <div id="everyday_art">
         <div>
@@ -98,68 +104,12 @@
             </div>
         </div>
     </div>
-
-    <div class="title">TRENDING NOW</div>
-    <div class="product">
-        <div>
-            <a href="Product.jsp">
-                <img src="https://product.hstatic.net/200000677367/product/161_da22d96f39a94e88984ef4f014ccc164_master.jpg"
-                     style="width: 100%;" alt="">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">REBOOT THE PROGRAM BIG BOXY T-SHIRT</div>
-                <div class="product_price">
-                    <div>329,000₫</div>
-                    <div class="old_price_product">390,000₫</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <a href="Product.jsp">
-                <img src="https://product.hstatic.net/200000677367/product/175_cca8e55234c7438d959f838601f48428_master.jpg"
-                     style="width: 100%;" alt="">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">SS NO.2 BIG BOXY SHIRT</div>
-                <div class="product_price">
-                    <div>439,000₫</div>
-                    <div class="old_price_product">450,000₫</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <a href="Product.jsp">
-                <img src="https://product.hstatic.net/200000677367/product/173_b2b86a9beac3495ba2e60d2df56c27c3_master.jpg"
-                     style="width: 100%;" alt="">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">SS LOGO CARGO PANTS V.2</div>
-                <div class="product_price">
-                    <div>599,000₫</div>
-                    <div class="old_price_product">620,000₫</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <a href="Product.jsp">
-                <img src="https://product.hstatic.net/200000677367/product/171_37870a0a7d364cf9a9d1cbcc82d66a41_master.jpg"
-                     style="width: 100%;" alt="">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">THE STAR BOXY HOODIE</div>
-                <div class="product_price">
-                    <div>579,000₫</div>
-                    <div class="old_price_product">650,000₫</div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-
 <!--Footer-->
 <div><c:import url="../viewshare/Footer.jsp"/></div>
 <!-- End Footer-->
 
 <script src="${pageContext.request.contextPath}/view/js/cookie.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/index.js"></script>
 </body>
 </html>

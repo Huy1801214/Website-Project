@@ -45,24 +45,23 @@
     <div class="nav-links">
         <a href="#">ALL</a>
         <a href="#">MỚI NHẤT</a>
-        <a href="#">ÁO THUN<i class="fas fa-caret-down"></i></a>
-        <a href="#">BABY TEE &amp; VÁY</a>
-        <a href="#">POLO &amp; SƠ MI</a>
-        <a href="#">ÁO KHOÁC</a>
+        <a href="#">ÁO THUN</a>
         <a href="#">QUẦN</a>
         <a href="#">PHỤ KIỆN</a></div>
     <div class="nav-icons">
-        <a href="${pageContext.request.contextPath}/view/jsp/Login.jsp">
-            <%-- Hiển thị username nếu có user trong session --%>
-            <c:choose>
-                <c:when test="${not empty sessionScope.user}">
-                    <c:out value="${sessionScope.user.username}"/><i class="fas fa-user"></i>
-                </c:when>
-                <c:otherwise>
-                    Đăng nhập <i class="fas fa-user"></i>
-                </c:otherwise>
-            </c:choose>
-        </a>
+        <%-- Hiển thị username nếu có user trong session --%>
+        <c:choose>
+            <c:when test="${not empty sessionScope.user}">
+                <a href="${pageContext.request.contextPath}/view/jsp/account_infor.jsp"><c:out
+                        value="${sessionScope.user.username}"/> <i class="fas fa-user"></i></i>
+                </a>
+            </c:when>
+            <c:otherwise>
+                <a href="${pageContext.request.contextPath}/view/jsp/Login.jsp">Đăng nhập <i class="fas fa-user"></i>
+                </a>
+            </c:otherwise>
+        </c:choose>
+
         <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp"><i class="fas fa-shopping-bag"></i><span
                 id="cart-count">0</span></a>
     </div>
