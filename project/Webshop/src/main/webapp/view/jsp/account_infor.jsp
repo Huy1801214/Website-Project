@@ -38,7 +38,7 @@
     <div class="position-relative mb-4">
         <!-- Hình nền -->
         <div style="height: 250px; background-color: #f0f0f0;">
-            <img src="product_01.png" class="w-100 h-100 object-fit-cover" alt="Background image">
+            <img src="../img/product_01.png" class="w-100 h-100 object-fit-cover" alt="Background image">
         </div>
 
         <!-- Text chào mừng - đã điều chỉnh vị trí -->
