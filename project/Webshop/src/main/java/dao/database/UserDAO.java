@@ -112,7 +112,27 @@ public class UserDAO implements DAOInterface<User> {
 
     @Override
     public int update(User user) {
-        return 0;
+        String query = "update users set surname = ?, lastname = ?, username = ?, gender = ?, email = ?, phone_num = ?, address = ? where id_user = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setString(1, user.getSurname());
+            preparedStatement.setString(2, user.getLastname());
+            preparedStatement.setString(3, user.getUsername());
+            preparedStatement.setString(4, user.getGender());
+            preparedStatement.setString(5, user.getEmail());
+            preparedStatement.setString(6, user.getPhone_num());
+            preparedStatement.setString(7, user.getAddress());
+            preparedStatement.setInt(8, user.getId_user());
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
 
     public User getUserIfLogin(String email, String password) {
