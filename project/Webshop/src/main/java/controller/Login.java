@@ -22,7 +22,8 @@ public class Login extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User user = userDAO.getUserIfLogin(email, Encrypt.encrypt(password));
-
+        //test
+        System.out.println(user.getUsername());
         if(user != null) {
             // thong tin hop le thi tra ve 1 session
             HttpSession session = request.getSession(true); // true la tao session neu chưa có, lấy session nếu có

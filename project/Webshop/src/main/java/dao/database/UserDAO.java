@@ -130,9 +130,15 @@ public class UserDAO implements DAOInterface<User> {
             if (resultSet.next()) {
                 User user = new User();
                 user.setId_user(resultSet.getInt("id_user"));
+                user.setId_role(resultSet.getInt("id_role"));
+                user.setSurname(resultSet.getString("surname"));
+                user.setLastname(resultSet.getString("lastname"));
+                user.setUsername(resultSet.getString("username"));
+                user.setGender(resultSet.getString("gender"));
+                user.setPhone_num(resultSet.getString("phone_num"));
+                user.setAddress(resultSet.getString("address"));
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
-                user.setId_role(resultSet.getInt("id_role"));
 
                 return user;
             }
