@@ -49,7 +49,7 @@
                         <div class="product_name">${product.product_name}</div>
                         <div class="product_price">
                             <div><fmt:formatNumber value="${product.out_price}" type="currency" currencySymbol="đ"
-                                                   maxFractionDigits="0"></fmt:formatNumber></div>
+                                                   maxFractionDigits="0"/></div>
                         </div>
                     </div>
                 </div>

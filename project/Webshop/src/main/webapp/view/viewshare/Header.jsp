@@ -43,7 +43,7 @@
                                                                              width="50"/></a>
     </div>
     <div class="nav-links">
-        <a href="#">ALL</a>
+        <a href="${pageContext.request.contextPath}/ProductCategory">ALL</a>
         <a href="#">MỚI NHẤT</a>
         <a href="#">ÁO THUN</a>
         <a href="#">QUẦN</a>
