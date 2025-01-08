@@ -45,3 +45,13 @@ productContainer.addEventListener('mousemove', (e) => {
     const walk = (x - startX);
     product.style.transform = `translateX(${walk}px)`;
 });
+
+function selectSize(button) {
+    // Lấy tất cả các nút size
+    const sizeButtons = document.querySelectorAll('.size-button');
+    sizeButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    button.classList.add('active');
+}

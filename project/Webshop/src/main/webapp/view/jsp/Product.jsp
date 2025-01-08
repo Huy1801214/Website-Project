@@ -19,20 +19,33 @@
     </div>
 
     <div>
+        <!-- Tên -->
         <div class="title">${product.product_name}</div>
         <div class="price"><fmt:formatNumber value="${product.out_price}" pattern="#,###"/>đ</div>
+
+        <!-- Màu -->
         <div>Màu sắc</div>
         <div class="color-selector">
             <c:forEach var="option" items="${options}">
-                <c:if test="${not empty option.color}">
-                    <input type="radio" name="color" value="${option.color}">
-                </c:if>
+                <c:choose>
+                    <c:when test="${not empty option.color}">
+                        <input type="radio" name="color" value="${option.color}"
+                               style="background-color: ${option.color};">
+                    </c:when>
+                    <c:otherwise>
+                        <div></div>
+                    </c:otherwise>
+                </c:choose>
             </c:forEach>
         </div>
         <div>Kích thước</div>
         <div class="size-buttons">
-            <button>M</button>
-            <button>L</button>
+            <c:forEach var="option" items="${options}">
+                <c:if test="${not empty option.size}">
+                    <button class="size-button" data-size="${option.size}"
+                            onclick="selectSize(this)">${option.size}</button>
+                </c:if>
+            </c:forEach>
         </div>
         <div>
             <button class="buy-button">MUA NGAY</button>
@@ -41,10 +54,9 @@
         <div class="accordion">
             <div class="accordion-header">Thông tin sản phẩm</div>
             <div class="accordion-content">
-                <div>Màu sắc: Đen/Xám</div>
-                <div>Form: Ống rộng</div>
-                <div>Size: M/L</div>
-                <div>Chất liệu: Cotton (nỉ bông), 350gsm</div>
+                <div>
+                    ${product.description};
+                </div>
             </div>
         </div>
         <div class="accordion">
@@ -70,71 +82,19 @@
 <div class="title" style="margin-left: 20px; text-align: center;">Gợi ý cho bạn</div>
 <div class="product-container">
     <div class="product">
-        <div>
-            <a href="Product.jsp">
-                <img src="https://product.hstatic.net/200000677367/product/161_da22d96f39a94e88984ef4f014ccc164_master.jpg"
-                     alt="Product 1">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">REBOOT THE PROGRAM BIG BOXY T-SHIRT</div>
-                <div class="product_price">
-                    <div>329,000₫</div>
-                    <div class="old_price_product">390,000₫</div>
+        <c:forEach var="suggestedProduct" items="${suggestedProducts}">
+            <div>
+                <a href="${pageContext.request.contextPath}/Ct_product?id_product=${suggestedProduct.id_product}">
+                    <img src="${suggestedProduct.img}" alt="${suggestedProduct.product_name}" style="width: 270px; height: 300px">
+                </a>
+                <div class="product_infor">
+                    <div class="product_name">${suggestedProduct.product_name}</div>
+                    <div class="product_price">
+                        <div><fmt:formatNumber value="${suggestedProduct.out_price}" pattern="#,###"/>₫</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <a href="Product.jsp">
-                <img src="https://product.hstatic.net/200000677367/product/175_cca8e55234c7438d959f838601f48428_master.jpg"
-                     alt="Product 2">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">SS NO.2 BIG BOXY SHIRT</div>
-                <div class="product_price">
-                    <div>439,000₫</div>
-                    <div class="old_price_product">450,000₫</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <a href="Product.jsp">
-                <img src="https://product.hstatic.net/200000677367/product/173_b2b86a9beac3495ba2e60d2df56c27c3_master.jpg"
-                     alt="Product 3">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">SS LOGO CARGO PANTS V.2</div>
-                <div class="product_price">
-                    <div>599,000₫</div>
-                    <div class="old_price_product">620,000₫</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <a href="Product.jsp">
-                <img src="https://product.hstatic.net/200000677367/product/171_37870a0a7d364cf9a9d1cbcc82d66a41_master.jpg"
-                     alt="Product 4">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">THE STAR BOXY HOODIE</div>
-                <div class="product_price">
-                    <div>579,000₫</div>
-                    <div class="old_price_product">650,000₫</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <a href="Product.jsp">
-                <img src="https://product.hstatic.net/200000677367/product/172_ae5726e7f2db411d9f6ba4fd4249a96e_master.jpg"
-                     alt="Product 5">
-            </a>
-            <div class="product_infor">
-                <div class="product_name">SS LOGO BAGGY PANTS</div>
-                <div class="product_price">
-                    <div>599,000₫</div>
-                    <div class="old_price_product">620,000₫</div>
-                </div>
-            </div>
-        </div>
+        </c:forEach>
     </div>
 </div>
 

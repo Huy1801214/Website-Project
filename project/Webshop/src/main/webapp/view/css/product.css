@@ -228,6 +228,11 @@ input[type="radio"] {
     color: white;
 }
 
+.size-buttons button.active {
+    background-color: #333;
+    color: white;
+}
+
 /* Accordion styles */
 .accordion {
     border-top: 1px solid #ddd;

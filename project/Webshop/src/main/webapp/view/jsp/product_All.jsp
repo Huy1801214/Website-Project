@@ -244,20 +244,20 @@
         <div class="col-md-9">
             <div class="row">
                 <!-- hiện sản phẩm -->
-<%--                <c:forEach var="product" items="${products}">--%>
-<%--                    <div class="slide">--%>
-<%--                        <a href="${pageContext.request.contextPath}/Ct_product?id_product=${product.id_product}"><img>--%>
-<%--                            <img src="${product.img}" style="width: 270px; height: 300px" alt="">--%>
-<%--                        </a>--%>
-<%--                        <div class="product_infor">--%>
-<%--                            <div class="product_name">${product.product_name}</div>--%>
-<%--                            <div class="product_price">--%>
-<%--                                <div><fmt:formatNumber value="${product.out_price}" type="currency" currencySymbol="đ"--%>
-<%--                                                       maxFractionDigits="0"/></div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </c:forEach>--%>
+                <%--                <c:forEach var="product" items="${products}">--%>
+                <%--                    <div class="slide">--%>
+                <%--                        <a href="${pageContext.request.contextPath}/Ct_product?id_product=${product.id_product}"><img>--%>
+                <%--                            <img src="${product.img}" style="width: 270px; height: 300px" alt="">--%>
+                <%--                        </a>--%>
+                <%--                        <div class="product_infor">--%>
+                <%--                            <div class="product_name">${product.product_name}</div>--%>
+                <%--                            <div class="product_price">--%>
+                <%--                                <div><fmt:formatNumber value="${product.out_price}" type="currency" currencySymbol="đ"--%>
+                <%--                                                       maxFractionDigits="0"/></div>--%>
+                <%--                            </div>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </c:forEach>--%>
                 <!-- Product Card 1 -->
                 <c:forEach var="product" items="${products}">
                     <div class="col-md-4 product-card">
@@ -275,7 +275,7 @@
                         <h5 class="product-title">${product.product_name}</h5>
                         <p class="mb-0">
                             <span class="product-price"><fmt:formatNumber value="${product.out_price}" type="currency"
-                                                        maxFractionDigits="0"/></span>
+                                                                          maxFractionDigits="0"/></span>
                         </p>
                     </div>
                 </c:forEach>
@@ -316,7 +316,7 @@
 
                         <button class="btn btn-primary add-to-cart-btn">THÊM VÀO GIỎ</button>
                         <div class="text-center mt-2">
-                            <a href="#" class="view-detail-link">hoặc Xem chi tiết</a>
+                                <a href="#" class="view-detail-link">hoặc Xem chi tiết</a>
                         </div>
                     </div>
                 </div>

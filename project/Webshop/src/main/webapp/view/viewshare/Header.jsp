@@ -39,7 +39,7 @@
 
 <div class="navbar">
     <div class="logo">
-        <a href="${pageContext.request.contextPath}/view/jsp/index.jsp"><img alt="Company Logo" height="50" src="#"
+        <a href="${pageContext.request.contextPath}/LoadProduct"><img alt="Company Logo" height="50" src="#"
                                                                              width="50"/></a>
     </div>
     <div class="nav-links">
