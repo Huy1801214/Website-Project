@@ -13,6 +13,7 @@ import java.util.List;
 @WebServlet(name = "LoadProduct", value = "/LoadProduct")
 public class LoadProduct extends HttpServlet {
     ProductDAO dao = new ProductDAO();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Products> products;

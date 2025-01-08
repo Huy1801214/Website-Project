@@ -26,6 +26,6 @@ public class Logout extends HttpServlet {
             cookie.setPath("/");
             response.addCookie(cookie);
         }
-        response.sendRedirect("/Webshop/view/jsp/index.jsp");
+        response.sendRedirect("/Webshop/LoadProduct");
     }
 }

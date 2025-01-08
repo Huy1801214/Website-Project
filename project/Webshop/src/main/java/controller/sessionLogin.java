@@ -31,7 +31,7 @@ public class sessionLogin extends HttpServlet {
         if(session == null) {
             String cookieConsent = request.getHeader("cookieConsent");
             if (cookieConsent == null) { // neu cookie consent null thi quay ve trang index de tiep tuc hoi cookie
-                response.sendRedirect("/view/jsp/index.jsp");
+                response.sendRedirect("/Webshop/LoadProduct");
                 return;
             }
             if(cookieConsent.equals("false")) {
@@ -42,12 +42,12 @@ public class sessionLogin extends HttpServlet {
             if(user != null) {
                 if(user.getId_role() == 1) { // user role là 1
                     System.out.println("dăng nhập thành công, cookie thành công, " + session.getId());
-                    response.sendRedirect("view/jsp/index.jsp"); // chuyển hướng tới trang chủ
+                    response.sendRedirect("/Webshop/LoadProduct"); // chuyển hướng tới trang chủ
                 } else if(user.getId_role() == 0) { // user role là 0
                     response.sendRedirect("view/jsp/Overview_admin.jsp"); // chuyển hướng tới trang admin
                 }
             } else {
-                response.sendRedirect("/view/jsp/index.jsp"); // nếu không có user ở session thì chuyển về trang chủ
+                response.sendRedirect("/Webshop/LoadProduct"); // nếu không có user ở session thì chuyển về trang chủ
             }
         }
     }

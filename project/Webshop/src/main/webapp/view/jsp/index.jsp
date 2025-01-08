@@ -39,9 +39,10 @@
 
     <div class="slideshow-container">
         <div class="slides">
+            <!-- hiện sản phẩm -->
             <c:forEach var="product" items="${products}">
                 <div class="slide">
-                    <a href="${pageContext.request.contextPath}/view/jsp/Product.jsp">
+                    <a href="${pageContext.request.contextPath}/Ct_product?id_product=${product.id_product}"><img>
                         <img src="${product.img}" style="width: 270px; height: 300px" alt="">
                     </a>
                     <div class="product_infor">

@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/product.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/product.css">
     <title>Product</title>
 </head>
 <body>
@@ -15,16 +15,19 @@
 
 <div class="infor_product">
     <div>
-        <img src="https://product.hstatic.net/200000677367/product/dsc06540_copy_2mb_2df878aae2e9468a93bcae75bad66305_master.jpg"
-             alt="Product Image" style="width: 100%;">
+        <img src="${product.img}" alt="${product.product_name}" style="width: 100%;">
     </div>
+
     <div>
-        <div class="title">BASIC LOGO SWEATPANTS</div>
-        <div class="price">620,000₫</div>
+        <div class="title">${product.product_name}</div>
+        <div class="price"><fmt:formatNumber value="${product.out_price}" pattern="#,###"/>đ</div>
         <div>Màu sắc</div>
         <div class="color-selector">
-            <input type="radio" name="color" value="white">
-            <input type="radio" name="color" value="black">
+            <c:forEach var="option" items="${options}">
+                <c:if test="${not empty option.color}">
+                    <input type="radio" name="color" value="${option.color}">
+                </c:if>
+            </c:forEach>
         </div>
         <div>Kích thước</div>
         <div class="size-buttons">
@@ -134,58 +137,11 @@
         </div>
     </div>
 </div>
-<script>
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const content = header.nextElementSibling;
-            const isActive = header.classList.contains('active');
-            // Close all other open items
-            accordionHeaders.forEach(otherHeader => {
-                if (otherHeader !== header && otherHeader.classList.contains('active')) {
-                    otherHeader.classList.remove('active');
-                    otherHeader.nextElementSibling.classList.remove('show')
-                }
-            });
-            header.classList.toggle('active');
-            content.classList.toggle('show');
-        });
-    });
-    // Drag to scroll
-    const productContainer = document.querySelector('.product-container');
-    const product = document.querySelector('.product');
-    let isDragging = false;
-    let startX;
-    let scrollLeft;
-    product.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        product.classList.add('dragging');
-        startX = e.pageX - product.offsetLeft;
-        scrollLeft = product.scrollLeft;
-    });
-
-    product.addEventListener('mouseleave', () => {
-        isDragging = false;
-        product.classList.remove('dragging');
-    });
-
-    product.addEventListener('mouseup', () => {
-        isDragging = false;
-        product.classList.remove('dragging');
-    });
-
-    productContainer.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.pageX - product.offsetLeft;
-        const walk = (x - startX);
-        product.style.transform = `translateX(${walk}px)`;
-    });
-</script>
 
 <!--Footer-->
 <div><c:import url="../viewshare/Footer.jsp"/></div>
 <!-- End Footer-->
+
+<script src="${pageContext.request.contextPath}/view/js/product.js"></script>
 </body>
 </html>

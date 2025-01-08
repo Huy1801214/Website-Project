@@ -63,7 +63,7 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     @Override
-    public User selectById(User user) {
+    public User selectById(int id) {
         return null;
     }
 

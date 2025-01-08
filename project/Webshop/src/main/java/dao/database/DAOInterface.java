@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public interface DAOInterface<T> {
     ArrayList<T> selectAll();
 
-    T selectById(T t);
+    T selectById(int id);
 
     int insert(T t);
 

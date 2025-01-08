@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ProductDAO implements DAOInterface<Products>{
+public class ProductDAO implements DAOInterface<Products> {
     @Override
     public ArrayList<Products> selectAll() {
         ArrayList<Products> products = new ArrayList<>();
@@ -30,7 +30,7 @@ public class ProductDAO implements DAOInterface<Products>{
                 BigDecimal out_price = resultSet.getBigDecimal("out_price");
                 int quantity = resultSet.getInt("quantity");
                 int selled_quantity = resultSet.getInt("selled_quantity");
-                Date created_date =resultSet.getDate("created_date");
+                Date created_date = resultSet.getDate("created_date");
                 int id_category = resultSet.getInt("id_category");
 
 
@@ -46,7 +46,36 @@ public class ProductDAO implements DAOInterface<Products>{
     }
 
     @Override
-    public Products selectById(Products products) {
+    public Products selectById(int id) {
+        String query = "select * from product where id_product = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        ResultSet resultSet = null;
+
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Products products = new Products();
+                products.setId_product(resultSet.getInt("id_product"));
+                products.setProduct_name(resultSet.getString("product_name"));
+                products.setImg(resultSet.getString("img"));
+                products.setDescription(resultSet.getString("description"));
+                products.setIn_price(resultSet.getBigDecimal("in_price"));
+                products.setOut_price(resultSet.getBigDecimal("out_price"));
+                products.setQuantity(resultSet.getInt("quantity"));
+                products.setSelled_quantity(resultSet.getInt("selled_quantity"));
+                products.setCreadted_date(resultSet.getDate("created_date"));
+                products.setId_category(resultSet.getInt("id_category"));
+
+                return products;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(resultSet, preparedStatement, DBConnect.getConnection());
+        }
         return null;
     }
 
@@ -73,5 +102,11 @@ public class ProductDAO implements DAOInterface<Products>{
     @Override
     public int update(Products products) {
         return 0;
+    }
+
+    public static void main(String[] args) {
+        ProductDAO dao = new ProductDAO();
+        Products p = dao.selectById(2);
+        System.out.println(p.getProduct_name());
     }
 }

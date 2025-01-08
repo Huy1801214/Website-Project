@@ -34,194 +34,196 @@
     <button id="reject-cookie-btn">Không đồng ý</button>
 </div>
 <body>
-    <!-- Header với hình nền -->
-    <div class="position-relative mb-4">
-        <!-- Hình nền -->
-        <div style="height: 250px; background-color: #f0f0f0;">
-            <img src="../img/product_01.png" class="w-100 h-100 object-fit-cover" alt="Background image">
-        </div>
-
-        <!-- Text chào mừng - đã điều chỉnh vị trí -->
-        <div class="position-absolute start-0 top-50 translate-middle-y p-4 text-white">
-            <h2 class="m-0">Xin chào</h2>
-            <h2 class="m-0">Nguyễn Phi</h2>
-        </div>
+<!-- Header với hình nền -->
+<div class="position-relative mb-4">
+    <!-- Hình nền -->
+    <div style="height: 250px; background-color: #f0f0f0;">
+        <img src="../img/product_01.png" class="w-100 h-100 object-fit-cover" alt="Background image">
     </div>
 
-    <!-- Container chính của trang -->
-    <div class="container mt-4" style="margin: 1.5rem 6rem 3rem;">
-        <div class="row">
-            <!-- Cột trái chứa thông tin tài khoản và danh sách địa chỉ -->
-            <div class="col-md-6">
-                <!-- Thông tin tài khoản -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-                            <div>
-                                <i class="bi bi-person"></i>
-                                <span class="h5">THÔNG TIN TÀI KHOẢN</span>
-                            </div>
-                            <a href="#" class="text-decoration-none" data-bs-toggle="modal"
-                               data-bs-target="#updateInfoModal">Chỉnh sửa</a>
-                        </div>
+    <!-- Text chào mừng - đã điều chỉnh vị trí -->
+    <div class="position-absolute start-0 top-50 translate-middle-y p-4 text-white">
+        <h2 class="m-0">Xin chào</h2>
+        <h2 class="m-0">Nguyễn Phi</h2>
+    </div>
+</div>
 
-                        <div class="row mb-2">
-                            <div class="col-md-2">
-                                <div class="text-muted">Họ</div>
-                                <div class="text-nowrap fw-bold">
-                                    <c:choose>
-                                        <c:when test="${not empty sessionScope.user}">
-                                            <c:out value="${sessionScope.user.surname}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            ---
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-2">
-                                <div class="text-muted">Giới tính</div>
-                                <div class="text-nowrap fw-bold">
-                                    <c:choose>
-                                        <c:when test="${not empty sessionScope.user}">
-                                            <c:out value="${sessionScope.user.gender}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            ---
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </div>
-                            <div class="col-md-4"></div>
+<!-- Container chính của trang -->
+<div class="container mt-4" style="margin: 1.5rem 6rem 3rem;">
+    <div class="row">
+        <!-- Cột trái chứa thông tin tài khoản và danh sách địa chỉ -->
+        <div class="col-md-6">
+            <!-- Thông tin tài khoản -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                        <div>
+                            <i class="bi bi-person"></i>
+                            <span class="h5">THÔNG TIN TÀI KHOẢN</span>
                         </div>
-
-                        <div class="row mb-2">
-                            <div class="col-md-2">
-                                <div class="text-muted">Tên</div>
-                                <div class="text-nowrap fw-bold">
-                                    <c:choose>
-                                        <c:when test="${not empty sessionScope.user}">
-                                            <c:out value="${sessionScope.user.lastname}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            ---
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-2">
-                                <div class="text-muted">Email</div>
-                                <div class="text-nowrap fw-bold">
-                                    <c:choose>
-                                        <c:when test="${not empty sessionScope.user}">
-                                            <c:out value="${sessionScope.user.email}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            ---
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </div>
-                            <div class="col-md-4"></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="text-muted">Số điện thoại</div>
-                                <div class="text-nowrap fw-bold">
-                                    <c:choose>
-                                        <c:when test="${not empty sessionScope.user}">
-                                            <c:out value="${sessionScope.user.phone_num}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            ---
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="#" class="text-decoration-none" data-bs-toggle="modal"
+                           data-bs-target="#updateInfoModal">Chỉnh sửa</a>
                     </div>
-                </div>
 
-                <!-- Danh sách địa chỉ -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-                            <div>
-                                <i class="bi bi-truck"></i>
-                                <span class="h5">DANH SÁCH ĐỊA CHỈ</span>
+                    <div class="row mb-2">
+                        <div class="col-md-2">
+                            <div class="text-muted">Họ</div>
+                            <div class="text-nowrap fw-bold">
+                                <c:choose>
+                                    <c:when test="${not empty sessionScope.user}">
+                                        <c:out value="${sessionScope.user.surname}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ---
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
-                            <a href="#" class="text-decoration-none">Xem tất cả</a>
                         </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-2">
+                            <div class="text-muted">Giới tính</div>
+                            <div class="text-nowrap fw-bold">
+                                <c:choose>
+                                    <c:when test="${not empty sessionScope.user}">
+                                        <c:out value="${sessionScope.user.gender}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ---
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
 
-                        <div class="p-3 border rounded">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <strong>Nguyễn Phi -</strong>
-                                    <div>, Vietnam</div>
-                                </div>
-                                <span class="text-primary">Mặc định</span>
+                    <div class="row mb-2">
+                        <div class="col-md-2">
+                            <div class="text-muted">Tên</div>
+                            <div class="text-nowrap fw-bold">
+                                <c:choose>
+                                    <c:when test="${not empty sessionScope.user}">
+                                        <c:out value="${sessionScope.user.lastname}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ---
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-2">
+                            <div class="text-muted">Email</div>
+                            <div class="text-nowrap fw-bold">
+                                <c:choose>
+                                    <c:when test="${not empty sessionScope.user}">
+                                        <c:out value="${sessionScope.user.email}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ---
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="text-muted">Số điện thoại</div>
+                            <div class="text-nowrap fw-bold">
+                                <c:choose>
+                                    <c:when test="${not empty sessionScope.user}">
+                                        <c:out value="${sessionScope.user.phone_num}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ---
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Cột phải chứa lịch sử mua hàng và sản phẩm yêu thích -->
-            <div class="col-md-6">
-                <!-- Lịch sử mua hàng -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-                            <div>
-                                <i class="bi bi-clock-history"></i>
-                                <span class="h5">LỊCH SỬ MUA HÀNG</span>
-                            </div>
-                            <a href="#" class="text-decoration-none">Xem tất cả</a>
+            <!-- Danh sách địa chỉ -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                        <div>
+                            <i class="bi bi-truck"></i>
+                            <span class="h5">DANH SÁCH ĐỊA CHỈ</span>
                         </div>
-                        <p>Bạn chưa có đơn hàng nào. Tiếp tục mua hàng!</p>
+                        <a href="#" class="text-decoration-none">Xem tất cả</a>
                     </div>
-                </div>
 
-                <!-- Sản phẩm yêu thích -->
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                    <div class="p-3 border rounded">
+                        <div class="d-flex justify-content-between">
                             <div>
-                                <i class="bi bi-heart"></i>
-                                <span class="h5">SẢN PHẨM YÊU THÍCH</span>
+                                <strong>Nguyễn Phi -</strong>
+                                <div>, Vietnam</div>
                             </div>
-                            <a href="#" class="text-decoration-none">Xem tất cả</a>
+                            <span class="text-primary">Mặc định</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Nút đăng xuất -->
-        <div class="mt-4 text-end">
-            <button class="btn btn-outline-dark px-4">ĐĂNG XUẤT</button>
+        <!-- Cột phải chứa lịch sử mua hàng và sản phẩm yêu thích -->
+        <div class="col-md-6">
+            <!-- Lịch sử mua hàng -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                        <div>
+                            <i class="bi bi-clock-history"></i>
+                            <span class="h5">LỊCH SỬ MUA HÀNG</span>
+                        </div>
+                        <a href="#" class="text-decoration-none">Xem tất cả</a>
+                    </div>
+                    <p>Bạn chưa có đơn hàng nào. Tiếp tục mua hàng!</p>
+                </div>
+            </div>
+
+            <!-- Sản phẩm yêu thích -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                        <div>
+                            <i class="bi bi-heart"></i>
+                            <span class="h5">SẢN PHẨM YÊU THÍCH</span>
+                        </div>
+                        <a href="#" class="text-decoration-none">Xem tất cả</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Modal Cập nhật thông tin -->
-    <div class="modal fade" id="updateInfoModal" tabindex="-1" aria-labelledby="updateInfoModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title" id="updateInfoModalLabel">CẬP NHẬT THÔNG TIN</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="${pageContext.request.contextPath}/AccountInfor" method="post">
-                        <!-- Họ -->
-                        <div class="mb-3">
-                            <label class="form-label" for="id_surname">Họ</label>
-                            <input type="text" name="surname" id="id_surname" class="form-control"
-                                   value="<c:choose>
+    <!-- Nút đăng xuất -->
+    <div class="mt-4 text-end">
+        <form action="${pageContext.request.contextPath}/Logout" method="post">
+            <button type="submit" class="btn btn-outline-dark px-4">ĐĂNG XUẤT</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Cập nhật thông tin -->
+<div class="modal fade" id="updateInfoModal" tabindex="-1" aria-labelledby="updateInfoModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="updateInfoModalLabel">CẬP NHẬT THÔNG TIN</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="${pageContext.request.contextPath}/AccountInfor" method="post">
+                    <!-- Họ -->
+                    <div class="mb-3">
+                        <label class="form-label" for="id_surname">Họ</label>
+                        <input type="text" name="surname" id="id_surname" class="form-control"
+                               value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
                                         <c:out value="${sessionScope.user.surname}"/>
                                     </c:when>
@@ -229,13 +231,13 @@
                                         ---
                                     </c:otherwise>
                                 </c:choose>">
-                        </div>
+                    </div>
 
-                        <!-- Tên -->
-                        <div class="mb-3">
-                            <label class="form-label">Tên</label>
-                            <input type="text" name="lastname" id="id_lastName" class="form-control"
-                                   value="<c:choose>
+                    <!-- Tên -->
+                    <div class="mb-3">
+                        <label class="form-label">Tên</label>
+                        <input type="text" name="lastname" id="id_lastName" class="form-control"
+                               value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
                                         <c:out value="${sessionScope.user.lastname}"/>
                                     </c:when>
@@ -243,42 +245,43 @@
                                         ---
                                     </c:otherwise>
                                 </c:choose>">
-                        </div>
+                    </div>
 
-                        <!-- Username -->
-                        <div class="mb-3">
-                            <label class="form-label">Username</label>
-                            <input type="text" name="username" id="id_username" class="form-control"
-                                   value="<c:choose>
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="username" id="id_username" class="form-control"
+                               value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
                                         <c:out value="${sessionScope.user.username}"/>
                                     </c:when>
                                     <c:otherwise>
                                         ---
                                     </c:otherwise>
-                                </c:choose>" >
-                        </div>
+                                </c:choose>">
+                    </div>
 
-                        <!-- Giới tính -->
-                        <div class="mb-3">
-                            <label class="form-label">Giới tính</label>
-                            <div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="female" value="Nữ">
-                                    <label class="form-check-label" for="female">Nữ</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="male" value="Nam" checked>
-                                    <label class="form-check-label" for="male">Nam</label>
-                                </div>
+                    <!-- Giới tính -->
+                    <div class="mb-3">
+                        <label class="form-label">Giới tính</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="female" value="Nữ">
+                                <label class="form-check-label" for="female">Nữ</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" id="male" value="Nam"
+                                       checked>
+                                <label class="form-check-label" for="male">Nam</label>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Email -->
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="text" class="form-control" name="email" id="id_email"
-                                   value="<c:choose>
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="text" class="form-control" name="email" id="id_email"
+                               value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
                                         <c:out value="${sessionScope.user.email}"/>
                                     </c:when>
@@ -286,13 +289,13 @@
                                         ---
                                     </c:otherwise>
                                 </c:choose>">
-                        </div>
+                    </div>
 
-                        <!-- Số điện thoại -->
-                        <div class="mb-3">
-                            <label class="form-label">Số điện thoại</label>
-                            <input type="text" class="form-control" name="phone_num" id="id_phone_num"
-                                   value="<c:choose>
+                    <!-- Số điện thoại -->
+                    <div class="mb-3">
+                        <label class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" name="phone_num" id="id_phone_num"
+                               value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
                                         <c:out value="${sessionScope.user.phone_num}"/>
                                     </c:when>
@@ -300,13 +303,13 @@
                                         ---
                                     </c:otherwise>
                                 </c:choose>">
-                        </div>
+                    </div>
 
-                        <!-- Địa chỉ -->
-                        <div class="mb-3">
-                            <label class="form-label">Địa chỉ</label>
-                            <input type="text" class="form-control" name="address" id="id_address"
-                                   value="<c:choose>
+                    <!-- Địa chỉ -->
+                    <div class="mb-3">
+                        <label class="form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" name="address" id="id_address"
+                               value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
                                         <c:out value="${sessionScope.user.address}"/>
                                     </c:when>
@@ -314,15 +317,15 @@
                                         ---
                                     </c:otherwise>
                                 </c:choose>">
-                        </div>
+                    </div>
 
-                        <!-- Nút cập nhật -->
-                        <button type="submit" class="btn btn-dark w-100">Cập nhật</button>
-                    </form>
-                </div>
+                    <!-- Nút cập nhật -->
+                    <button type="submit" class="btn btn-dark w-100">Cập nhật</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </body>
 <!--Footer-->
 <div><c:import url="../viewshare/Footer.jsp"/></div>
