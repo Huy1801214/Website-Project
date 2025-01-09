@@ -14,16 +14,15 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .breadcrumb {
-            background-color: #f0f0f0;
-            font-size: small;
-            padding: 10px 5%;
-            margin-bottom: 0;
+        .nav-breadcrumb {
+            background-color: #dddddd;
+            padding: 0.3rem 7rem 0.1rem;
         }
 
         .breadcrumb a {
-            color: #999;
+            color: #999999;
             text-decoration: none;
+            font-size: small;
         }
 
         .product-card {
@@ -192,10 +191,9 @@
 <!-- End Header-->
 
 <!-- Breadcrumb -->
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" class="nav-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<c:url value="/LoadProduct"></c:url>">Trang chủ</a></li>
-        <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
         <li class="breadcrumb-item active" aria-current="page">ALL PRODUCTS</li>
     </ol>
 </nav>

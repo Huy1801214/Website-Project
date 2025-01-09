@@ -45,6 +45,36 @@ public class ProductDAO implements DAOInterface<Products> {
         return products;
     }
 
+    public ArrayList<Products> searchProductsByName(String keyword) {
+        ArrayList<Products> products = new ArrayList<>();
+        String query = "select * from product where product_name like ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        ResultSet resultSet = null;
+        try {
+            preparedStatement.setString(1, "%" + keyword + "%");
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Products product = new Products();
+                product.setId_product(resultSet.getInt("id_product"));
+                product.setProduct_name(resultSet.getString("product_name"));
+                product.setImg(resultSet.getString("img"));
+                product.setDescription(resultSet.getString("description"));
+                product.setIn_price(resultSet.getBigDecimal("in_price"));
+                product.setOut_price(resultSet.getBigDecimal("out_price"));
+                product.setQuantity(resultSet.getInt("quantity"));
+                product.setSelled_quantity(resultSet.getInt("selled_quantity"));
+                product.setCreadted_date(resultSet.getDate("created_date"));
+                product.setId_category(resultSet.getInt("id_category"));
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(resultSet, preparedStatement, DBConnect.getConnection());
+        }
+        return products;
+    }
+
     public ArrayList<Products> selectByIdCategory(int id_category) {
         ArrayList<Products> products = new ArrayList<>();
         String query = "select * from product where id_category = ?";

@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/index.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/cookie.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -21,14 +23,6 @@
             crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-<style>
-    .custom-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ không gian */
-        aspect-ratio: 16/9; /* Đặt tỷ lệ khung hình tương tự như SVG */
-    }
-</style>
 <body>
 <!-- Header-->
 <%--<div id="header-container"><c:import url="../viewshare/Header.jsp"/></div>--%>
@@ -38,19 +32,21 @@
     <p>Chúng tôi sử dụng cookie để cung cấp trải nghiệm duyệt web mượt mà, cá nhân hóa nội dung,
         <br> cải thiện trang web của chúng tôi,
         và thực hiện các điều khác được mô tả trong <a href="#">Chính sách cookie</a>.</p>
-    <button id="accept-cookie-btn">Đồng ý</button>
-    <button id="reject-cookie-btn">Không đồng ý</button>
+    <form method="get" action="${pageContext.request.contextPath}/CookieConsentS">
+        <button id="accept-cookie-btn" name="consent" value="true">Đồng ý</button>
+        <button id="reject-cookie-btn" name="consent" value="false">Không đồng ý</button>
+    </form>
 </div>
 
 <header class="p-3 mb-3 border-bottom">
     <div class="container" style="border-bottom: solid thick black; padding-bottom: 10px">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="${pageContext.request.contextPath}/LoadProduct" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+            <a href="<c:url value="/LoadProduct"/>" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
                 <img src="" alt="Company Logo" height="50"  width="50"/>
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="${pageContext.request.contextPath}/LoadProduct" class="nav-link px-2 link-secondary">Home</a></li>
+                <li><a href="<c:url value="/LoadProduct"/>" class="nav-link px-2 link-secondary">Home</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">Shop</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">Features</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">About</a></li>
@@ -68,17 +64,17 @@
                 <%-- Hiển thị username nếu có user trong session --%>
                 <c:choose>
                     <c:when test="${not empty sessionScope.user}">
-                        <a href="${pageContext.request.contextPath}/view/jsp/account_infor.jsp"><c:out
-                                value="${sessionScope.user.username}"/> <i class="fas fa-user"></i></i>
+                        <a href="<c:url value="/view/jsp/account_infor.jsp"/>"><c:out
+                                value="${sessionScope.user.username}"/> <i class="fas fa-user"></i>
                         </a>
                     </c:when>
                     <c:otherwise>
-                        <a href="${pageContext.request.contextPath}/view/jsp/Login.jsp">Đăng nhập <i class="fas fa-user"></i>
+                        <a href="<c:url value="/view/jsp/Login.jsp"/>">Đăng nhập <i class="fas fa-user"></i>
                         </a>
                     </c:otherwise>
                 </c:choose>
 
-                <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp"><i class="fas fa-shopping-bag"></i><span
+                <a href="<c:url value="/view/jsp/Shopping_cart.jsp"/>"><i class="fas fa-shopping-bag"></i><span
                         id="cart-count">0</span></a>
             </div>
         </div>
@@ -87,15 +83,19 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="${pageContext.request.contextPath}/ProductCategory?action=all" class="nav-link px-2 link-secondary">ALL</a></li>
-                <li><a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=1" class="nav-link px-2 link-body-emphasis">ÁO THUN</a></li>
-                <li><a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=2" class="nav-link px-2 link-body-emphasis">QUẦN</a></li>
-                <li><a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=3" class="nav-link px-2 link-body-emphasis">PHỤ KIỆN</a></li>
+                <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="all"/></c:url>" class="nav-link px-2 link-secondary">ALL</a></li>
+                <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
+                <c:param name="id_category" value="1"/></c:url>" class="nav-link px-2 link-body-emphasis">ÁO THUN</a></li>
+                <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
+                <c:param name="id_category" value="2"/></c:url>" class="nav-link px-2 link-body-emphasis">QUẦN</a></li>
+                <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
+                <c:param name="id_category" value="3"/></c:url>" class="nav-link px-2 link-body-emphasis">PHỤ KIỆN</a></li>
             </ul>
         </div>
     </div>
 </header>
 
+<%--Slider--%>
 <div class="container">
     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -106,13 +106,23 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item">
-                <img src="https://theme.hstatic.net/200000677367/1001276449/14/woinsliderimg1.png?v=2476" class="d-block w-100 custom-img" alt="Slider 1">
+                <a href="${pageContext.request.contextPath}/ProductCategory?action=all">
+                    <img src="https://theme.hstatic.net/200000677367/1001276449/14/woinsliderimg1.png?v=2476"
+                         class="d-block w-100 custom-img" alt="Slider 1">
+                </a>
+
             </div>
             <div class="carousel-item active">
-                <img src="https://theme.hstatic.net/200000677367/1001276449/14/woinsliderimg2.png?v=2476" class="d-block w-100 custom-img" alt="Slider 2">
+                <a href="${pageContext.request.contextPath}/ProductCategory?action=all">
+                    <img src="https://theme.hstatic.net/200000677367/1001276449/14/woinsliderimg2.png?v=2476"
+                         class="d-block w-100 custom-img" alt="Slider 2">
+                </a>
             </div>
             <div class="carousel-item">
-                <img src="https://theme.hstatic.net/1000197303/1001046599/14/popup_banner.jpg?v=10329" class="d-block w-100 custom-img" alt="Slider 2">
+                <a href="${pageContext.request.contextPath}/ProductCategory?action=all">
+                    <img src="https://theme.hstatic.net/200000677367/1001276449/14/woinsliderimg1.png?v=2476"
+                         class="d-block w-100 custom-img" alt="Slider 3">
+                </a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
@@ -125,6 +135,7 @@
         </button>
     </div>
 </div>
+
 <div class="main-content">
     <div class="title">COLLECTIONS</div>
 
