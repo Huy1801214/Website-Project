@@ -243,26 +243,11 @@
         <!-- Products Grid -->
         <div class="col-md-9">
             <div class="row">
-                <!-- hiện sản phẩm -->
-                <%--                <c:forEach var="product" items="${products}">--%>
-                <%--                    <div class="slide">--%>
-                <%--                        <a href="${pageContext.request.contextPath}/Ct_product?id_product=${product.id_product}"><img>--%>
-                <%--                            <img src="${product.img}" style="width: 270px; height: 300px" alt="">--%>
-                <%--                        </a>--%>
-                <%--                        <div class="product_infor">--%>
-                <%--                            <div class="product_name">${product.product_name}</div>--%>
-                <%--                            <div class="product_price">--%>
-                <%--                                <div><fmt:formatNumber value="${product.out_price}" type="currency" currencySymbol="đ"--%>
-                <%--                                                       maxFractionDigits="0"/></div>--%>
-                <%--                            </div>--%>
-                <%--                        </div>--%>
-                <%--                    </div>--%>
-                <%--                </c:forEach>--%>
                 <!-- Product Card 1 -->
                 <c:forEach var="product" items="${products}">
                     <div class="col-md-4 product-card">
                         <div class="product-image-container">
-                            <a href="${pageContext.request.contextPath}/Ct_prodcut?id_product=${product.id_product}">
+                            <a href="${pageContext.request.contextPath}/Ct_product?id_product=${product.id_product}">
                                 <img src="${product.img}" alt="">
                             </a>
                             <div class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"

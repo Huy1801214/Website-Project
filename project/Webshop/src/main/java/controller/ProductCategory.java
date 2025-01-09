@@ -11,21 +11,34 @@ import java.util.List;
 
 @WebServlet(name = "ProductCategory", value = "/ProductCategory")
 public class ProductCategory extends HttpServlet {
-    ProductDAO dao = new ProductDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Products> products;
-        products = dao.selectAll();
+        ProductDAO dao = new ProductDAO();
+        String action = request.getParameter("action");
+        List<Products> products = null;
 
-        if(products.isEmpty()){
-            System.out.println("Loi database");
+        if ("all".equals(action)) {
+            // Gọi hàm selectAll
+            products = dao.selectAll();
+        } else if ("category".equals(action)) {
+            // Lấy id_category từ request
+            String idCategoryStr = request.getParameter("id_category");
+            try {
+                int idCategory = Integer.parseInt(idCategoryStr);
+                products = dao.selectByIdCategory(idCategory);
+            } catch (NumberFormatException e) {
+                // Xử lý lỗi nếu id_category không phải là số
+                request.setAttribute("error", "Invalid category ID");
+            }
         }
+
         request.setAttribute("products", products);
         request.getRequestDispatcher("view/jsp/product_All.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 }

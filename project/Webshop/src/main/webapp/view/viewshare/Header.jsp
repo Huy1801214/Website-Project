@@ -43,11 +43,10 @@
                                                                              width="50"/></a>
     </div>
     <div class="nav-links">
-        <a href="${pageContext.request.contextPath}/ProductCategory">ALL</a>
-        <a href="#">MỚI NHẤT</a>
-        <a href="#">ÁO THUN</a>
-        <a href="#">QUẦN</a>
-        <a href="#">PHỤ KIỆN</a></div>
+        <a href="${pageContext.request.contextPath}/ProductCategory?action=all">ALL</a>
+        <a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=1">ÁO THUN</a>
+        <a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=2">QUẦN</a>
+        <a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=3">PHỤ KIỆN</a></div>
     <div class="nav-icons">
         <%-- Hiển thị username nếu có user trong session --%>
         <c:choose>
