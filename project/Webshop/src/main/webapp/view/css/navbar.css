@@ -1,17 +1,4 @@
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    border-top: 2px black;
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    width: 100%;
-    top: 0px;
-    background-color: white;
-    z-index: 999;
-    box-sizing: border-box;
-}
+
 .logo {
     display: flex;
     align-items: center;
@@ -21,9 +8,15 @@
 }
 .nav-links {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    justify-content: center;
+
+    padding: 20px 20px;
 }
+
+.nav-links > div {
+    background-color: blue;
+}
+
 .nav-links a {
     text-decoration: none;
     color: black;

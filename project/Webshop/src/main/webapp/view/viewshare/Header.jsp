@@ -25,61 +25,59 @@
 </head>
 <body>
 <header class="p-3 mb-3 border-bottom">
-    <div class="container">
+    <div class="container" style="border-bottom: solid thick black; padding-bottom: 10px">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
+            <a href="${pageContext.request.contextPath}/LoadProduct" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                <img src="" alt="Company Logo" height="50"  width="50"/>
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/LoadProduct" class="nav-link px-2 link-secondary">Home</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">Shop</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">Features</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">About</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="${pageContext.request.contextPath}/SearchProduct" method="get">
-                <input class="form-control me-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+                <div class="position-relative">
+                    <input class="form-control" name="keyword" type="search" placeholder="Search" aria-label="Search" style="padding-right: 40px;">
+                    <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3" style="pointer-events: none; color: gray;"></i>
+                </div>
             </form>
 
-            <div class="text-end">
-                <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                <button type="button" class="btn btn-primary">Sign-up</button>
+
+            <div class="nav-icons">
+                <%-- Hiển thị username nếu có user trong session --%>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.user}">
+                        <a href="${pageContext.request.contextPath}/view/jsp/account_infor.jsp"><c:out
+                                value="${sessionScope.user.username}"/> <i class="fas fa-user"></i></i>
+                        </a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="${pageContext.request.contextPath}/view/jsp/Login.jsp">Đăng nhập <i class="fas fa-user"></i>
+                        </a>
+                    </c:otherwise>
+                </c:choose>
+
+                <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp"><i class="fas fa-shopping-bag"></i><span
+                        id="cart-count">0</span></a>
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="${pageContext.request.contextPath}/ProductCategory?action=all" class="nav-link px-2 link-secondary">ALL</a></li>
+                <li><a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=1" class="nav-link px-2 link-body-emphasis">ÁO THUN</a></li>
+                <li><a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=2" class="nav-link px-2 link-body-emphasis">QUẦN</a></li>
+                <li><a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=3" class="nav-link px-2 link-body-emphasis">PHỤ KIỆN</a></li>
+            </ul>
         </div>
     </div>
 </header>
 
-<div class="navbar">
-    <div class="logo">
-        <a href="${pageContext.request.contextPath}/LoadProduct"><img alt="Company Logo" height="50" src="#"
-                                                                      width="50"/></a>
-    </div>
-    <div class="nav-links">
-        <a href="${pageContext.request.contextPath}/ProductCategory?action=all">ALL</a>
-        <a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=1">ÁO THUN</a>
-        <a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=2">QUẦN</a>
-        <a href="${pageContext.request.contextPath}/ProductCategory?action=category&id_category=3">PHỤ KIỆN</a></div>
-    <div class="nav-icons">
-        <%-- Hiển thị username nếu có user trong session --%>
-        <c:choose>
-            <c:when test="${not empty sessionScope.user}">
-                <a href="${pageContext.request.contextPath}/view/jsp/account_infor.jsp"><c:out
-                        value="${sessionScope.user.username}"/> <i class="fas fa-user"></i></i>
-                </a>
-            </c:when>
-            <c:otherwise>
-                <a href="${pageContext.request.contextPath}/view/jsp/Login.jsp">Đăng nhập <i class="fas fa-user"></i>
-                </a>
-            </c:otherwise>
-        </c:choose>
-
-        <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp"><i class="fas fa-shopping-bag"></i><span
-                id="cart-count">0</span></a>
-    </div>
-</div>
 <script src="../js/header.js"></script>
 </body>
 </html>

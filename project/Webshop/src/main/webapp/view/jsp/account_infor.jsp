@@ -26,13 +26,6 @@
 <div id="header-container"><c:import url="../viewshare/Header.jsp"/></div>
 <!-- End Header-->
 
-<div id="cookie-banner">
-    <p>Chúng tôi sử dụng cookie để cung cấp trải nghiệm duyệt web mượt mà, cá nhân hóa nội dung,
-        <br> cải thiện trang web của chúng tôi,
-        và thực hiện các điều khác được mô tả trong <a href="#">Chính sách cookie</a>.</p>
-    <button id="accept-cookie-btn">Đồng ý</button>
-    <button id="reject-cookie-btn">Không đồng ý</button>
-</div>
 <body>
 <!-- Header với hình nền -->
 <div class="position-relative mb-4">
