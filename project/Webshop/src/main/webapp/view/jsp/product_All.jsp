@@ -194,7 +194,7 @@
 <!-- Breadcrumb -->
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/LoadProduct">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a href="<c:url value="/LoadProduct"></c:url>">Trang chủ</a></li>
         <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
         <li class="breadcrumb-item active" aria-current="page">ALL PRODUCTS</li>
     </ol>
@@ -247,7 +247,7 @@
                 <c:forEach var="product" items="${products}">
                     <div class="col-md-4 product-card">
                         <div class="product-image-container">
-                            <a href="${pageContext.request.contextPath}/Ct_product?id_product=${product.id_product}">
+                            <a href="<c:url value="/Ct_product"><c:param name="id_product" value="${product.id_product}"/></c:url>">
                                 <img src="${product.img}" alt="">
                             </a>
                             <div class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"
@@ -264,6 +264,7 @@
                         </p>
                     </div>
                 </c:forEach>
+
             </div>
         </div>
     </div>

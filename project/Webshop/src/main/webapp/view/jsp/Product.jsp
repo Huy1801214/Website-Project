@@ -84,7 +84,7 @@
     <div class="product">
         <c:forEach var="suggestedProduct" items="${suggestedProducts}">
             <div>
-                <a href="${pageContext.request.contextPath}/Ct_product?id_product=${suggestedProduct.id_product}">
+                <a href="<c:url value="/Ct_product"><c:param name="id_product" value="${suggestedProduct.id_product}"/></c:url>">
                     <img src="${suggestedProduct.img}" alt="${suggestedProduct.product_name}" style="width: 270px; height: 300px">
                 </a>
                 <div class="product_infor">

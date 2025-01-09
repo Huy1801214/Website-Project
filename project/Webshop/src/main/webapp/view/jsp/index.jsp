@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/index.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/cookie.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/header.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -127,8 +125,6 @@
         </button>
     </div>
 </div>
-
-
 <div class="main-content">
     <div class="title">COLLECTIONS</div>
 
@@ -137,8 +133,9 @@
             <!-- hiện sản phẩm -->
             <c:forEach var="product" items="${products}">
                 <div class="slide">
-                    <a href="${pageContext.request.contextPath}/Ct_product?id_product=${product.id_product}"><img>
-                        <img src="${product.img}" style="width: 270px; height: 300px" alt="">
+                    <!-- giống response.encodeURL -->
+                    <a href="<c:url value="/Ct_product"><c:param name="id_product" value="${product.id_product}"/></c:url>">
+                        <img src="${product.img}" style="width: 270px; height: 300px;" alt=""/>
                     </a>
                     <div class="product_infor">
                         <div class="product_name">${product.product_name}</div>

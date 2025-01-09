@@ -1,25 +1,30 @@
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptBtn = document.getElementById('accept-cookie-btn');
-    const rejectBtn = document.getElementById('reject-cookie-btn');
-    const cookieConsent = localStorage.getItem('cookieConsent'); // Kiểm tra đã có sự đồng ý chưa
+const cookieBanner = document.getElementById('cookie-banner');
+const acceptBtn = document.getElementById('accept-cookie-btn');
+const rejectBtn = document.getElementById('reject-cookie-btn');
 
-    if (cookieConsent === null) { // nếu người dùng chưa có cookie, sẽ hiện thông báo
-        cookieBanner.classList.add('visible');
-    }
+// Hàm kiểm tra xem cookie 'cookieConsent' có tồn tại không
+function hasCookieConsent() {
+    return document.cookie.split('; ').some(cookie => cookie.startsWith('cookieConsent='));
+}
 
-    acceptBtn.onclick = function () {
-        localStorage.setItem('cookieConsent', 'true');
-        cookieBanner.classList.remove('visible');
-        setTimeout(() => {
-            window.location.href = window.location.href;
-        }, 500);
+if (!hasCookieConsent()) { // Nếu cookie chưa tồn tại, hiển thị banner
+    cookieBanner.classList.add('visible');
+}
 
-    };
+acceptBtn.onclick = function () {
+    // Tạo cookie 'cookieConsent' với giá trị 'true'
+    document.cookie = 'cookieConsent=true; path=/;';
+    cookieBanner.classList.remove('visible');
+    setTimeout(() => {
+        window.location.href = window.location.href;
+    }, 500);
+};
 
-    rejectBtn.onclick = function () {
-        localStorage.setItem('cookieConsent', 'false');
-        cookieBanner.classList.remove('visible');
-        setTimeout(() => {
-            window.location.href = window.location.href;
-        }, 500);
-    };
+rejectBtn.onclick = function () {
+    // Tạo cookie 'cookieConsent' với giá trị 'false'
+    document.cookie = 'cookieConsent=false; path=/;';
+    cookieBanner.classList.remove('visible');
+    setTimeout(() => {
+        window.location.href = window.location.href;
+    }, 500);
+};

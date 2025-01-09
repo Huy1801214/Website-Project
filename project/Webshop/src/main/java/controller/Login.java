@@ -24,31 +24,31 @@ public class Login extends HttpServlet {
         User user = userDAO.getUserIfLogin(email, Encrypt.encrypt(password));
         //test
         System.out.println(user.getUsername());
-        if(user != null) {
-            // thong tin hop le thi tra ve 1 session
+        if (user != null) {
+            // thong tin hop le thi tra ve 1 session tuy chinh
             HttpSession session = request.getSession(true); // true la tao session neu chưa có, lấy session nếu có
             session.setAttribute("user", user);
 
             //Kiểm tra cookie consent người dùng có accept kh (giong header trong raf)
-            boolean useCookie = true;
-            String cookieConsent = request.getHeader("cookieConsent");
-            if(cookieConsent != null && cookieConsent.equals("false")) {
-                useCookie = false;
+            boolean useCookie = false;
+            if (request.getCookies() != null) {
+                for (Cookie cookie : request.getCookies()) {
+                    if (cookie.getName().equals("cookieT")) {
+                        if (cookie.getValue().equals("true")) {
+                            useCookie = true;
+                        }
+                        break;
+                    }
+                }
             }
 
-            // neu dong y thi dùng cookie de quan ly session
-            if(useCookie) {
-                String sessionId = session.getId();
-                Cookie cookie = new Cookie("sessionId", sessionId);
-                cookie.setHttpOnly(true);
-                cookie.setSecure(request.isSecure());
-                cookie.setPath("/");
-                response.addCookie(cookie);
-                response.sendRedirect("/Webshop/sessionLogin");
+            // neu khong dong y dung url rewriting
+            if (!useCookie) {
+                String url = response.encodeRedirectURL(request.getContextPath() + "/LoadProduct");
+                response.sendRedirect(url);
             } else {
-                // neu khong dong y dung url rewriting
-                String redirectUrl = response.encodeRedirectURL("/Webshop/sessionLogin");
-                response.sendRedirect(redirectUrl);
+                // neu dong y thi dùng cookie de quan ly session
+                response.sendRedirect(request.getContextPath() + "/LoadProduct");
             }
 
         } else {
