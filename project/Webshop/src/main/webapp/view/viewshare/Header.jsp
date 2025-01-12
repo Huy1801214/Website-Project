@@ -34,7 +34,7 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="<c:url value="/LoadProduct"/>" class="nav-link px-2 link-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Shop</a></li>
+                <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="all"/></c:url>" class="nav-link px-2 link-body-emphasis">Shop</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">Features</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">About</a></li>
             </ul>
@@ -72,7 +72,7 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="all"/></c:url>" class="nav-link px-2 link-secondary">ALL</a></li>
                 <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
-                <c:param name="id_category" value="1"/></c:url>" class="nav-link px-2 link-body-emphasis">ÁO THUN</a></li>
+                <c:param name="id_category" value="1"/></c:url>" class="nav-link px-2 link-body-emphasis">ÁO</a></li>
                 <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
                 <c:param name="id_category" value="2"/></c:url>" class="nav-link px-2 link-body-emphasis">QUẦN</a></li>
                 <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>

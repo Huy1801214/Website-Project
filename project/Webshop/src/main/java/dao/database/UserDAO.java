@@ -112,7 +112,8 @@ public class UserDAO implements DAOInterface<User> {
 
     @Override
     public int update(User user) {
-        String query = "update users set surname = ?, lastname = ?, username = ?, gender = ?, email = ?, phone_num = ?, address = ? where id_user = ?";
+        String query = "update users set surname = ?, lastname = ?, username = ?, gender = ?, email = ?," +
+                " phone_num = ?, address = ? where id_user = ?";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         int rs = 0;
         try {
