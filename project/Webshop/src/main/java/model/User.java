@@ -5,17 +5,18 @@ public class User {
     int id_role, id_user;
     String surname, lastname, gender, phone_num, address, username;
 
-    public User(int id_user, int id_role, String surname, String lastname, String gender, String phone_num, String address, String email, String password, String username) {
+    public User(int id_user, int id_role, String surname, String lastname, String username, String gender,
+                String phone_num, String address, String email, String password) {
         this.id_user = id_user;
         this.id_role = id_role;
         this.surname = surname;
         this.lastname = lastname;
+        this.username = username;
         this.gender = gender;
         this.phone_num = phone_num;
         this.address = address;
         this.email = email;
         this.password = password;
-        this.username = username;
     }
 
     public User() {
@@ -99,6 +100,22 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", id_role=" + id_role +
+                ", id_user=" + id_user +
+                ", surname='" + surname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phone_num='" + phone_num + '\'' +
+                ", address='" + address + '\'' +
+                ", username='" + username + '\'' +
+                '}';
     }
 }
 

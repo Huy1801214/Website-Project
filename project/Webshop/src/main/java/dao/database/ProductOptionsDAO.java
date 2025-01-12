@@ -2,6 +2,7 @@ package dao.database;
 
 import dao.db.DBConnect;
 import model.ProductOptions;
+import model.Products;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,30 @@ public class ProductOptionsDAO implements DAOInterface<ProductOptions> {
 
     @Override
     public ProductOptions selectById(int id) {
+        String query = "select * from product_options where id_product = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        ResultSet resultSet = null;
+
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                ProductOptions po = new ProductOptions();
+                po.setId_product(id);
+                po.setSize(resultSet.getString("size"));
+                po.setColor(resultSet.getString("color"));
+                po.setQuantity(resultSet.getInt("quantity"));
+                po.setMa_dinh_danh(resultSet.getString("ma_dinh_danh"));
+
+                return po;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(resultSet, preparedStatement, DBConnect.getConnection());
+        }
         return null;
     }
 
@@ -32,7 +57,20 @@ public class ProductOptionsDAO implements DAOInterface<ProductOptions> {
 
     @Override
     public int delete(ProductOptions productOptions) {
-        return 0;
+        String query = "delete from product_options where id_product = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, productOptions.getId_product());
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
 
     @Override

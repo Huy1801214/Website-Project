@@ -635,7 +635,7 @@
 
     <session-config>
         <session-timeout>30</session-timeout>
-        <tracking-mode>URL</tracking-mode> <!-- url -->
+<!--        <tracking-mode>URL</tracking-mode> &lt;!&ndash; url &ndash;&gt;-->
     </session-config>
 
 

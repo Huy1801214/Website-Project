@@ -155,7 +155,20 @@ public class ProductDAO implements DAOInterface<Products> {
 
     @Override
     public int delete(Products products) {
-        return 0;
+        String query = "delete from product where id_product = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, products.getId_product());
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
 
     @Override

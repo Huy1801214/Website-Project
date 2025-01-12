@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO implements DAOInterface<User> {
 
@@ -218,5 +219,11 @@ public class UserDAO implements DAOInterface<User> {
         UserDAO dao = new UserDAO();
         User user = dao.selectByEmail("vyvy@gmail.com");
         System.out.println(user.getEmail());
+
+        List<User> l = dao.selectAll();
+
+        for (User user1 : l) {
+            System.out.println(user1.toString());
+        }
     }
 }
