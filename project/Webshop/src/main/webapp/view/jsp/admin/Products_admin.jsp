@@ -90,15 +90,17 @@
     </style>
 </head>
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
 <c:import url="../../viewshare/Header_admin.jsp"/>
-<h2>Quản lý sản phẩm</h2>
+<h2><fmt:message key="product_management_header"/></h2>
 <div class="search-add-container">
     <form action="#" class="search-form">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Nhập mã sản phẩm" name="search">
-            <button class="btn btn-primary" type="button">Tìm kiếm</button>
+            <input type="text" class="form-control" placeholder="<fmt:message key="admin_search_product"/>" name="search">
+            <button class="btn btn-primary" type="button"><fmt:message key="search_button"/></button>
             <button class="btn btn-warning btn-add btn-custom-dark" data-bs-toggle="modal"
-                    data-bs-target="#addModal" type="button">Thêm sản phẩm
+                    data-bs-target="#addModal" type="button"><fmt:message key="admin_add_product"/>
             </button>
         </div>
     </form>
@@ -108,15 +110,15 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Mã sản phẩm</th>
-            <th>Tên sản phẩm</th>
-            <th>Hình ảnh</th>
-            <th>Giá nhập</th>
-            <th>Giá bán</th>
-            <th>Số lượng</th>
-            <th>Ngày nhập hàng</th>
-            <th>Loại sản phẩm</th>
-            <th>Hành động</th>
+            <th><fmt:message key="product_id"/></th>
+            <th><fmt:message key="product_name"/></th>
+            <th><fmt:message key="product_image"/></th>
+            <th><fmt:message key="in_price"/></th>
+            <th><fmt:message key="out_price"/></th>
+            <th><fmt:message key="quantity"/></th>
+            <th><fmt:message key="import_date"/></th>
+            <th><fmt:message key="category"/></th>
+            <th><fmt:message key="action"/></th>
         </tr>
         </thead>
         <tbody>
@@ -127,7 +129,7 @@
                 </td>
                 <td>
                     <input type="text" class="form-control" name="product_name" value="${product.product_name}"
-                           readonly/>
+                    />
                 </td>
                 <td>
                     <img src="${product.img}" alt="${product.product_name}" class="product-image-table">
@@ -143,11 +145,11 @@
                     <input type="hidden" class="form-control" name="out_price" value="${product.out_price}" />
                 </td>
                 <td>
-                    <input type="number" class="form-control" name="quantity" value="${product.quantity}" readonly/>
+                    <input type="number" class="form-control" name="quantity" value="${product.quantity}" />
                 </td>
                 <td>
                     <input type="date" class="form-control" name="creadted_date"
-                           value="<fmt:formatDate value="${product.creadted_date}" pattern="yyyy-MM-dd"/>" readonly/>
+                           value="<fmt:formatDate value="${product.creadted_date}" pattern="yyyy-MM-dd"/>" />
                 </td>
                 <td>
                     <select class="form-select" name="id_category" disabled >
@@ -155,14 +157,13 @@
                         <option value="2" ${product.id_category == 2 ? 'selected' : ''}>Quần</option>
                         <option value="3" ${product.id_category == 3 ? 'selected' : ''}>Phụ kiện</option>
                     </select>
+                    <input type="hidden" name="id_category" value="${product.id_category}">
                 </td>
                 <td>
-                    <a href="<c:url value="/ShowDetailPro">
-                    <c:param name="id_product" value="${product.id_product}"/></c:url>"
-                       class="btn btn-danger btn-delete btn-custom-dark">Sửa</a>
+                    <button type="submit" class="btn btn-primary btn-custom-dark"><fmt:message key="admin_product_update"/></button>
                     <a href="<c:url value="/DeleteProductAdmin">
                     <c:param name="id_product" value="${product.id_product}"/></c:url>"
-                       class="btn btn-danger btn-delete btn-custom-gray">Xóa</a>
+                       class="btn btn-danger btn-delete btn-custom-gray"><fmt:message key="delete"/></a>
                 </td>
             </tr>
         </c:forEach>
@@ -177,47 +178,47 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header border-0">
-                <h5 class="modal-title" id="addModalLabel">Thêm sản phẩm mới</h5>
+                <h5 class="modal-title" id="addModalLabel"><fmt:message key="admin_add_product_modal_title"/></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="addProductForm" action="${pageContext.request.contextPath}/AddProductAdmin" method="post">
                     <div class="mb-3">
-                        <label for="add-product-name" class="form-label">Tên sản phẩm</label>
+                        <label for="add-product-name" class="form-label"><fmt:message key="product_name"/></label>
                         <input type="text" class="form-control" id="add-product-name" name="product_name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="add-img" class="form-label">URL hình ảnh</label>
+                        <label for="add-img" class="form-label"><fmt:message key="image"/></label>
                         <input type="text" class="form-control" id="add-img" name="img" required>
                     </div>
                     <div class="mb-3">
-                        <label for="add-product-description" class="form-label">Mô tả</label>
+                        <label for="add-product-description" class="form-label"><fmt:message key="product_description"/></label>
                         <textarea class="form-control" id="add-product-description" name="description" rows="4"
                                   required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="add-product-in-price" class="form-label">Giá nhập</label>
+                        <label for="add-product-in-price" class="form-label"><fmt:message key="in_price"/></label>
                         <input type="number" class="form-control" id="add-product-in-price" name="in_price"
                                required>
                     </div>
                     <div class="mb-3">
-                        <label for="add-product-out-price" class="form-label">Giá bán</label>
+                        <label for="add-product-out-price" class="form-label"><fmt:message key="out_price"/></label>
                         <input type="number" class="form-control" id="add-product-out-price" name="out_price"
                                required>
                     </div>
                     <div class="mb-3">
-                        <label for="add-product-quantity" class="form-label">Số lượng</label>
+                        <label for="add-product-quantity" class="form-label"><fmt:message key="quantity"/></label>
                         <input type="number" class="form-control" id="add-product-quantity" name="quantity"
                                required>
                     </div>
                     <div class="mb-3">
-                        <label for="add-product-manufacture-date" class="form-label">Ngày nhập hàng</label>
+                        <label for="add-product-manufacture-date" class="form-label"><fmt:message key="import_date"/></label>
                         <input type="date" class="form-control" id="add-product-manufacture-date"
                                name="creadted_date"
                                required>
                     </div>
                     <div class="mb-3">
-                        <label for="add-product-category" class="form-label">Loại sản phẩm</label>
+                        <label for="add-product-category" class="form-label"><fmt:message key="category"/></label>
                         <select class="form-select" id="add-product-category" name="id_category" required>
                             <option value="1">Áo</option>
                             <option value="2">Quần</option>
@@ -225,8 +226,8 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Xác nhận</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary"><fmt:message key="confirm"/></button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><fmt:message key="cancel"/></button>
                 </form>
             </div>
         </div>

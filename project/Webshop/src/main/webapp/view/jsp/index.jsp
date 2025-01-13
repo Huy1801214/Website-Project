@@ -24,17 +24,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
+
 <!-- Header-->
 <div id="header-container"><c:import url="../viewshare/Header.jsp"/></div>
 <!-- End Header-->
 
 <div id="cookie-banner">
-    <p>Chúng tôi sử dụng cookie để cung cấp trải nghiệm duyệt web mượt mà, cá nhân hóa nội dung,
-        <br> cải thiện trang web của chúng tôi,
-        và thực hiện các điều khác được mô tả trong <a href="#">Chính sách cookie</a>.</p>
+    <p><fmt:message key="cookie_front"/>
+        <br> <fmt:message key="cookie_middle"/></p>
     <form method="get" action="${pageContext.request.contextPath}/CookieConsentS">
-        <button id="accept-cookie-btn" name="consent" value="true">Đồng ý</button>
-        <button id="reject-cookie-btn" name="consent" value="false">Không đồng ý</button>
+        <button id="accept-cookie-btn" name="consent" value="true"><fmt:message key="cookie_yes"/></button>
+        <button id="reject-cookie-btn" name="consent" value="false"><fmt:message key="cookie_no"/></button>
     </form>
 </div>
 
@@ -79,7 +81,7 @@
 
 
 <div class="main-content">
-    <div class="title">COLLECTIONS</div>
+    <div class="title"><fmt:message key="index_colec"/></div>
 
     <div class="slideshow-container">
         <div class="slides">

@@ -12,7 +12,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/products_admin.css">
-    <title>Quản lý khách hàng</title>
+    <title><fmt:message key="customer_management_title"/></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossorigin="anonymous">
@@ -42,13 +42,15 @@
     </style>
 </head>
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
 <c:import url="../../viewshare/Header_admin.jsp"/>
-<h2>Quản lý khách hàng</h2>
+<h2><fmt:message key="customer_management_header"/></h2>
 <div class="search-add-container">
     <form action="#" class="search-form">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Nhập mã khách hàng" name="search">
-            <button class="btn btn-primary" type="button">Tìm kiếm</button>
+            <input type="text" class="form-control" placeholder="<fmt:message key="customer_id_placeholder"/>" name="search">
+            <button class="btn btn-primary" type="button"><fmt:message key="search_button"/></button>
         </div>
     </form>
 </div>
@@ -56,12 +58,12 @@
 <table>
     <thead>
     <tr>
-        <th>Mã khách hàng</th>
-        <th>Tên khách hàng</th>
-        <th>Email</th>
-        <th>Số điện thoại</th>
-        <th>Địa chỉ</th>
-        <th>Hành động</th>
+        <th><fmt:message key="customer_id"/></th>
+        <th><fmt:message key="customer_name"/></th>
+        <th><fmt:message key="email"/></th>
+        <th><fmt:message key="phone_number"/></th>
+        <th><fmt:message key="address"/></th>
+        <th><fmt:message key="action"/></th>
     </tr>
     </thead>
     <tbody>
@@ -75,10 +77,10 @@
             <td>
                 <a href="<c:url value="/ShowDetailCus">
                     <c:param name="id_user" value="${customer.id_user}"/></c:url>"
-                   class="btn btn-primary btn-edit btn-custom-dark">Xem Chi Tiết</a>
+                   class="btn btn-primary btn-edit btn-custom-dark"><fmt:message key="view_detail"/></a>
                 <a href="<c:url value="/DeleteCustomerAdmin">
                     <c:param name="id_user" value="${customer.id_user}"/></c:url>"
-                   class="btn btn-danger btn-delete btn-custom-gray">Xóa</a>
+                   class="btn btn-danger btn-delete btn-custom-gray"><fmt:message key="delete"/></a>
             </td>
         </tr>
     </c:forEach>

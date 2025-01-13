@@ -10,25 +10,27 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Reset Password</title>
+    <title><fmt:message key="reset_pass_title"/></title>
     <link rel="stylesheet" href="../css/reset_pass.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
 <!-- Header-->
 <div><c:import url="../viewshare/Header.jsp"/></div>
 <!-- End Header-->
 
 <!-- Body -->
-<h2>Đổi mật khẩu</h2>
+<h2><fmt:message key="reset_pass_header"/></h2>
 <div class="reset-form">
     <form action="${pageContext.request.contextPath}/ResetPass" method="post">
         <c:if test="${not empty error}">
             <p style=" color: red">${error}</p>
         </c:if>
-        <input type="password" placeholder="Nhập mật khẩu mới của bạn" name="password" required="required">
-        <input type="password" placeholder="Nhập lại mật khẩu mới của bạn" name="confirmPassword" required="required">
-        <button>Đổi mật khẩu</button>
+        <input type="password" placeholder="<fmt:message key="new_password_placeholder"/>" name="password" required="required">
+        <input type="password" placeholder="<fmt:message key="confirm_new_password_placeholder"/>" name="confirmPassword" required="required">
+        <button><fmt:message key="change_password_btn"/></button>
     </form>
 </div>
 

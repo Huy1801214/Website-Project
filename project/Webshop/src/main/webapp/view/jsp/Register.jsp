@@ -16,30 +16,32 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/register.css">
 </head>
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
 <!-- Header -->
 <div><c:import url="../viewshare/Header.jsp"/></div>
 <!-- End Header -->
 <div class="form-container">
-    <h2>Đăng Ký</h2>
+    <h2><fmt:message key="register_header"/></h2>
     <form action="${pageContext.request.contextPath}/Register" method="post">
-        <input placeholder="Họ" type="text" name="surname" required="required"/>
-        <input placeholder="Tên" type="text" name="lastname" required="required"/>
-        <input placeholder="Username" type="text" name="username" required="required"/>
+        <input placeholder="<fmt:message key="surname"/>" type="text" name="surname" required="required"/>
+        <input placeholder="<fmt:message key="lastname"/>" type="text" name="lastname" required="required"/>
+        <input placeholder="<fmt:message key="username"/>" type="text" name="username" required="required"/>
         <div class="gender">
             <input id="female" name="gender" type="radio" required="required" checked="checked" value="Nữ"/>
-            <label for="female">Nữ</label>
+            <label for="female"><fmt:message key="gender_female"/></label>
             <input id="male" name="gender" type="radio" value="Nam"/>
-            <label for="male">Nam</label>
+            <label for="male"><fmt:message key="gender_male"/></label>
         </div>
-        <input placeholder="Phone number" type="text" name="phone_num" required="required"/>
-        <input placeholder="Email" type="email" name="email" required="required"/>
-        <input placeholder="mm/dd/yyyy" type="date" name="date_of_birth" required="required"/>
-        <input placeholder="Your address" type="text" name="address" required="required"/>
-        <input placeholder="Mật khẩu" type="password" name="password" required="required"/>
+        <input placeholder="<fmt:message key="phone_number"/>" type="text" name="phone_num" required="required"/>
+        <input placeholder="<fmt:message key="email"/>" type="email" name="email" required="required"/>
+        <input placeholder="<fmt:message key="date_of_birth"/>" type="date" name="date_of_birth" required="required"/>
+        <input placeholder="<fmt:message key="address"/>" type="text" name="address" required="required"/>
+        <input placeholder="<fmt:message key="password"/>" type="password" name="password" required="required"/>
 
-        <input type="submit" id="register_btn" value="ĐĂNG KÝ">
+        <input type="submit" id="register_btn" value="<fmt:message key="register_button"/>">
     </form>
-    <a class="back-link" href="#"><i class="fas fa-arrow-left"></i>Quay lại trang chủ</a>
+    <a class="back-link" href="#"><i class="fas fa-arrow-left"></i><fmt:message key="back_home"/></a>
 
     <%-- Hiển thị thông báo lỗi nếu có --%>
     <c:if test="${not empty errorMessage}">

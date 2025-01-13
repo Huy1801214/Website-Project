@@ -22,6 +22,8 @@
     <title>Tổng quan</title>
 </head>
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
 <!-- Header -->
 <c:import url="../../viewshare/Header_admin.jsp"/>
 <!-- End Header -->
@@ -36,27 +38,27 @@
 
     <!-- Text chào mừng - đã điều chỉnh vị trí -->
     <div class="position-absolute start-0 top-50 translate-middle-y p-4 text-white">
-        <h2 class="m-0">Xin chào</h2>
+        <h2 class="m-0"><fmt:message key="hello"/></h2>
         <h2 class="m-0"><c:out value="${sessionScope.user.surname}"/></h2>
     </div>
 </div>
 
 <div class="container">
     <div class="card">
-        <h2>Kết quả kinh doanh</h2>
+        <h2><fmt:message key="sales_results"/></h2>
         <div class="stats">
             <div class="stat stat-large">
-                <h3>Doanh thu thuần</h3>
+                <h3><fmt:message key="revenue_net"/></h3>
                 <p>0₫</p>
             </div>
             <div class="stat">
-                <h3>Tổng đơn</h3>
+                <h3><fmt:message key="total_order"/></h3>
                 <p>0</p>
             </div>
         </div>
         <div class="stats">
             <div class="stat">
-                <h3>Số lượng hàng bán</h3>
+                <h3><fmt:message key="items_sold"/></h3>
                 <p>0</p>
             </div>
         </div>

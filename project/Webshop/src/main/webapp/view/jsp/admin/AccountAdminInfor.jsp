@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Account Information</title>
+    <title>Account Infor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/index.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/cookie.css">
@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
 <!-- Header-->
 <div id="header-container">
     <c:import url="/view/viewshare/Header.jsp"/>
@@ -39,7 +41,7 @@
 
     <!-- Text chào mừng - đã điều chỉnh vị trí -->
     <div class="position-absolute start-0 top-50 translate-middle-y p-4 text-white">
-        <h2 class="m-0">Xin chào</h2>
+        <h2 class="m-0"><fmt:message key="hello"/></h2>
         <h2 class="m-0"><c:out value="${sessionScope.user.surname}"/></h2>
     </div>
 </div>
@@ -51,67 +53,67 @@
             <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
                 <div>
                     <i class="bi bi-person"></i>
-                    <span class="h5">THÔNG TIN TÀI KHOẢN</span>
+                    <span class="h5"><fmt:message key="account_infor"/></span>
                 </div>
             </div>
             <form action="${pageContext.request.contextPath}/UpdateCustomerAdmin" method="post">
-                <input type="hidden" name="id_user" value="${sessionScope.user.id_user}">
+                <input type="hidden" name="id_user" value="${sessionScope.user.id}">
                 <table class="table table-bordered">
                     <tbody>
                     <tr>
-                        <th scope="row">Họ</th>
+                        <th scope="row"><fmt:message key="account_ho"/></th>
                         <td>
                             <input type="text" name="surname" class="form-control"
                                    value="<c:out value="${sessionScope.user.surname}"/>">
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Tên</th>
+                        <th scope="row"><fmt:message key="account_ten"/></th>
                         <td>
                             <input type="text" name="lastname" class="form-control"
                                    value="<c:out value="${sessionScope.user.lastname}"/>">
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Tên đăng nhập</th>
+                        <th scope="row"><fmt:message key="username"/></th>
                         <td>
                             <input type="text" name="username" class="form-control"
                                    value="<c:out value="${sessionScope.user.username}"/>" readonly>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Giới tính</th>
+                        <th scope="row"><fmt:message key="account_gender"/></th>
                         <td>
                             <div class="d-flex align-items-center">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" id="female"
                                            value="Nữ" ${sessionScope.user.gender == 'Nữ' ? 'checked' : ''}>
-                                    <label class="form-check-label" for="female">Nữ</label>
+                                    <label class="form-check-label" for="female"><fmt:message key="gender_female"/></label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" id="male" value="Nam"
                                     ${sessionScope.user.gender == 'Nam' ? 'checked' : ''}>
-                                    <label class="form-check-label" for="male">Nam</label>
+                                    <label class="form-check-label" for="male"><fmt:message key="gender_male"/></label>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Email</th>
+                        <th scope="row"><fmt:message key="email"/></th>
                         <td>
                             <input type="text" name="email" class="form-control"
                                    value="<c:out value="${sessionScope.user.email}"/>">
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Số điện thoại</th>
+                        <th scope="row"><fmt:message key="phone_number"/></th>
                         <td>
                             <input type="text" name="phone_num" class="form-control"
                                    value="<c:out value="${sessionScope.user.phone_num}"/>">
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Địa chỉ</th>
+                        <th scope="row"><fmt:message key="address"/></th>
                         <td>
                             <input type="text" name="address" class="form-control"
                                    value="<c:out value="${sessionScope.user.address}"/>">
@@ -121,8 +123,8 @@
                 </table>
                 <!-- Nút cập nhật -->
                 <div class="mt-3 text-end">
-                    <a href="<c:url value="/LoadCustomerAdmin"/>" class="btn btn-dark px-4">Quay lại</a>
-                    <button type="submit" class="btn btn-dark px-4">Cập nhật thông tin</button>
+                    <a href="<c:url value="/LoadCustomerAdmin"/>" class="btn btn-dark px-4"><fmt:message key="back"/></a>
+                    <button type="submit" class="btn btn-dark px-4"><fmt:message key="account_update"/></button>
                 </div>
             </form>
 

@@ -27,6 +27,9 @@
 <!-- End Header-->
 
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
+
 <!-- Header với hình nền -->
 <div class="position-relative mb-4">
     <!-- Hình nền -->
@@ -52,15 +55,15 @@
                     <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
                         <div>
                             <i class="bi bi-person"></i>
-                            <span class="h5">THÔNG TIN TÀI KHOẢN</span>
+                            <span class="h5"><fmt:message key="account_infor"/></span>
                         </div>
                         <a href="#" class="text-decoration-none" data-bs-toggle="modal"
-                           data-bs-target="#updateInfoModal">Chỉnh sửa</a>
+                           data-bs-target="#updateInfoModal"><fmt:message key="account_update"/></a>
                     </div>
 
                     <div class="row mb-2">
                         <div class="col-md-2">
-                            <div class="text-muted">Họ</div>
+                            <div class="text-muted"><fmt:message key="account_ho"/></div>
                             <div class="text-nowrap fw-bold">
                                 <c:choose>
                                     <c:when test="${not empty sessionScope.user}">
@@ -74,7 +77,7 @@
                         </div>
                         <div class="col-md-4"></div>
                         <div class="col-md-2">
-                            <div class="text-muted">Giới tính</div>
+                            <div class="text-muted"><fmt:message key="account_gender"/></div>
                             <div class="text-nowrap fw-bold">
                                 <c:choose>
                                     <c:when test="${not empty sessionScope.user}">
@@ -91,7 +94,7 @@
 
                     <div class="row mb-2">
                         <div class="col-md-2">
-                            <div class="text-muted">Tên</div>
+                            <div class="text-muted"><fmt:message key="account_ten"/></div>
                             <div class="text-nowrap fw-bold">
                                 <c:choose>
                                     <c:when test="${not empty sessionScope.user}">
@@ -122,7 +125,7 @@
 
                     <div class="row">
                         <div class="col-md-2">
-                            <div class="text-muted">Số điện thoại</div>
+                            <div class="text-muted"><fmt:message key="account_sdt"/></div>
                             <div class="text-nowrap fw-bold">
                                 <c:choose>
                                     <c:when test="${not empty sessionScope.user}">
@@ -144,9 +147,9 @@
                     <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
                         <div>
                             <i class="bi bi-truck"></i>
-                            <span class="h5">DANH SÁCH ĐỊA CHỈ</span>
+                            <span class="h5"><fmt:message key="account_dsdc"/></span>
                         </div>
-                        <a href="#" class="text-decoration-none">Xem tất cả</a>
+                        <a href="#" class="text-decoration-none"><fmt:message key="account_xtc"/></a>
                     </div>
 
                     <div class="p-3 border rounded">
@@ -170,24 +173,11 @@
                     <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
                         <div>
                             <i class="bi bi-clock-history"></i>
-                            <span class="h5">LỊCH SỬ MUA HÀNG</span>
+                            <span class="h5"><fmt:message key="account_lsmh"/></span>
                         </div>
-                        <a href="#" class="text-decoration-none">Xem tất cả</a>
+                        <a href="#" class="text-decoration-none"><fmt:message key="account_xtc"/></a>
                     </div>
                     <p>Bạn chưa có đơn hàng nào. Tiếp tục mua hàng!</p>
-                </div>
-            </div>
-
-            <!-- Sản phẩm yêu thích -->
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-                        <div>
-                            <i class="bi bi-heart"></i>
-                            <span class="h5">SẢN PHẨM YÊU THÍCH</span>
-                        </div>
-                        <a href="#" class="text-decoration-none">Xem tất cả</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -196,7 +186,7 @@
     <!-- Nút đăng xuất -->
     <div class="mt-4 text-end">
         <form action="${pageContext.request.contextPath}/Logout" method="post">
-            <button type="submit" class="btn btn-outline-dark px-4">ĐĂNG XUẤT</button>
+            <button type="submit" class="btn btn-outline-dark px-4"><fmt:message key="account_logout"/></button>
         </form>
     </div>
 </div>
@@ -207,14 +197,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header border-0">
-                <h5 class="modal-title" id="updateInfoModalLabel">CẬP NHẬT THÔNG TIN</h5>
+                <h5 class="modal-title" id="updateInfoModalLabel"><fmt:message key="account_cntt"/></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="${pageContext.request.contextPath}/AccountInfor" method="post">
                     <!-- Họ -->
                     <div class="mb-3">
-                        <label class="form-label" for="id_surname">Họ</label>
+                        <label class="form-label" for="id_surname"><fmt:message key="account_ho"/></label>
                         <input type="text" name="surname" id="id_surname" class="form-control"
                                value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
@@ -228,7 +218,7 @@
 
                     <!-- Tên -->
                     <div class="mb-3">
-                        <label class="form-label">Tên</label>
+                        <label class="form-label"><fmt:message key="account_ten"/></label>
                         <input type="text" name="lastname" id="id_lastName" class="form-control"
                                value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
@@ -256,7 +246,7 @@
 
                     <!-- Giới tính -->
                     <div class="mb-3">
-                        <label class="form-label">Giới tính</label>
+                        <label class="form-label"><fmt:message key="account_gender"/></label>
                         <div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="gender" id="female" value="Nữ">
@@ -286,7 +276,7 @@
 
                     <!-- Số điện thoại -->
                     <div class="mb-3">
-                        <label class="form-label">Số điện thoại</label>
+                        <label class="form-label"><fmt:message key="account_sdt"/></label>
                         <input type="text" class="form-control" name="phone_num" id="id_phone_num"
                                value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
@@ -300,7 +290,7 @@
 
                     <!-- Địa chỉ -->
                     <div class="mb-3">
-                        <label class="form-label">Địa chỉ</label>
+                        <label class="form-label"><fmt:message key="account_diaChi"/></label>
                         <input type="text" class="form-control" name="address" id="id_address"
                                value="<c:choose>
                                     <c:when test="${not empty sessionScope.user}">
@@ -313,7 +303,7 @@
                     </div>
 
                     <!-- Nút cập nhật -->
-                    <button type="submit" class="btn btn-dark w-100">Cập nhật</button>
+                    <button type="submit" class="btn btn-dark w-100"><fmt:message key="account_up"/></button>
                 </form>
             </div>
         </div>
