@@ -25,7 +25,6 @@
 <div class="container">
     <div class="breadcrumb">
         <a href="${pageContext.request.contextPath}/view/jsp/index.jsp">Trang chủ</a>
-        /
         <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp">Giỏ hàng</a>
     </div>
     <div class="cart-title">
@@ -82,7 +81,7 @@
                     <strong>TỔNG CỘNG</strong>
                     <span class="total-price">620,000đ</span>
                 </p>
-                <button class="checkout-button">Thanh Toán</button>
+                <button class="checkout-button" type="submit">Thanh Toán</button>
             </div>
         </div>
     </div>

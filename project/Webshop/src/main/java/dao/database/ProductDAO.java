@@ -232,4 +232,22 @@ public class ProductDAO implements DAOInterface<Products> {
         Products p = dao.selectById(2);
         System.out.println(p.getProduct_name());
     }
+
+    public int updateQuantity(int idProduct, int quantity) {
+        String query = "update product set quantity = ? where id_product = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, quantity);
+            preparedStatement.setInt(2, idProduct);
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
+    }
 }
