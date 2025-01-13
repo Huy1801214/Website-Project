@@ -1,16 +1,15 @@
 package model;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class ShoppingCart {
     private int id_cart;
     private int id_user;
-    private Date date;
+    private LocalDateTime date;
 
-    public ShoppingCart() {
-    }
+    public ShoppingCart() {}
 
-    public ShoppingCart(int id_cart, int id_user, Date date) {
+    public ShoppingCart(int id_cart, int id_user, LocalDateTime date) {
         this.id_cart = id_cart;
         this.id_user = id_user;
         this.date = date;
@@ -32,11 +31,11 @@ public class ShoppingCart {
         this.id_user = id_user;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

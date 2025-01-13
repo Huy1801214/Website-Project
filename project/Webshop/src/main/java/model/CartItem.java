@@ -10,13 +10,15 @@ public class CartItem {
     private int quantity;
     private BigDecimal total_price;
 
-    public CartItem() {
-    }
+    public CartItem() {}
 
     public CartItem(int id_item, int id_cart, int id_product, int product_op_id, int quantity, BigDecimal total_price) {
         this.id_item = id_item;
         this.id_cart = id_cart;
         this.id_product = id_product;
+        this.product_op_id = product_op_id;
+        this.quantity = quantity;
+        this.total_price = total_price;
     }
 
     public int getId_item() {

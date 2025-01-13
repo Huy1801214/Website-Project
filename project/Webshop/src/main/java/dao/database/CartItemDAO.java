@@ -19,13 +19,59 @@ public class CartItemDAO implements DAOInterface<CartItem> {
 
     @Override
     public CartItem selectById(int id) {
+        String query = "select * from cart_items where id_item = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        ResultSet resultSet = null;
+
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                CartItem cartItem = new CartItem();
+                cartItem.setId_item(resultSet.getInt("id_item"));
+                cartItem.setId_cart(resultSet.getInt("id_item"));
+                cartItem.setId_product(resultSet.getInt("id_product"));
+                cartItem.setProduct_op_id(resultSet.getInt("product_op_id"));
+                cartItem.setQuantity(resultSet.getInt("quantity"));
+                cartItem.setTotal_price(resultSet.getBigDecimal("total_price"));
+
+                return cartItem;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(resultSet, preparedStatement, DBConnect.getConnection());
+        }
         return null;
     }
 
+
     @Override
     public int insert(CartItem cartItem) {
-        return 0;
+        String query = "insert into cart_items (id_item, id_cart, id_product, product_op_id, quantity, total_price) values(?,?,?,?,?,?)";
+        int rs = 0;
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, cartItem.getId_item());
+            preparedStatement.setInt(2, cartItem.getId_cart());
+            preparedStatement.setInt(3, cartItem.getId_product());
+            preparedStatement.setInt(4, cartItem.getProduct_op_id());
+            preparedStatement.setInt(5, cartItem.getQuantity());
+            preparedStatement.setBigDecimal(6, cartItem.getTotal_price());
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
+
 
     @Override
     public int insertAll(ArrayList<CartItem> arr) {
@@ -34,7 +80,38 @@ public class CartItemDAO implements DAOInterface<CartItem> {
 
     @Override
     public int delete(CartItem cartItem) {
-        return 0;
+        String query = "delete from cart_items where id_item = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, cartItem.getId_cart());
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
+    }
+
+    public int deleteCartItemById(int id){
+        String query = "delete from cart_items where id_cart = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, id);
+
+            rs = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
 
     @Override
@@ -44,8 +121,28 @@ public class CartItemDAO implements DAOInterface<CartItem> {
 
     @Override
     public int update(CartItem cartItem) {
-        return 0;
+        String query = "update cart_item set id_item = ?, id_cart = ?, id_product = ?, product_op_id = ?, quantity = ?," +
+                " total_price = ? where id_cart = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, cartItem.getId_item());
+            preparedStatement.setInt(2, cartItem.getId_cart());
+            preparedStatement.setInt(3, cartItem.getId_product());
+            preparedStatement.setInt(4, cartItem.getProduct_op_id());
+            preparedStatement.setInt(5, cartItem.getQuantity());
+            preparedStatement.setBigDecimal(6, cartItem.getTotal_price());
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
+
 
     public List<CartItem> selectCartItemById(int idCart) {
         String query = "select * from cart_items where id_cart = ?";

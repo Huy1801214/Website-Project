@@ -21,72 +21,75 @@
 <!-- Header-->
 <div id="header-container"><c:import url="../viewshare/Header.jsp"/></div>
 <!-- End Header-->
-<div class="infor_product">
-    <div>
-        <img src="${product.img}" alt="${product.product_name}" style="width: 100%;">
-    </div>
-
-    <div>
-        <!-- Tên -->
-        <div class="title">${product.product_name}</div>
-        <div class="price"><fmt:formatNumber value="${product.out_price}" pattern="#,###"/>₫</div>
-
-        <!-- Màu -->
-        <div><fmt:message key="product_color"/></div>
-        <div class="color-selector">
-            <c:forEach var="option" items="${options}">
-                <c:choose>
-                    <c:when test="${not empty option.color}">
-                        <input type="radio" name="color" value="${option.color}"
-                               style="background-color: ${option.color};">
-                    </c:when>
-                    <c:otherwise>
-                        <div></div>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </div>
-        <div><fmt:message key="product_size"/></div>
-        <div class="size-buttons">
-            <c:forEach var="option" items="${options}">
-                <c:if test="${not empty option.size}">
-                    <button class="size-button" data-size="${option.size}"
-                            onclick="selectSize(this)">${option.size}</button>
-                </c:if>
-            </c:forEach>
-        </div>
+<form action="${pageContext.request.contextPath}/add-to-cart" method="post">
+    <div class="infor_product" id="${product.id_product}">
         <div>
-            <button class="buy-button"><fmt:message key="buy_now"/></button>
-            <button class="add-button"><fmt:message key="add_to_cart"/></button>
+            <img src="${product.img}" alt="${product.product_name}" style="width: 100%;">
         </div>
-        <div class="accordion">
-            <div class="accordion-header"><fmt:message key="product_infor"/></div>
-            <div class="accordion-content">
-                <div>
-                    ${product.description};
+
+        <div>
+            <!-- Tên -->
+            <div class="title">${product.product_name}</div>
+            <div class="price"><fmt:formatNumber value="${product.out_price}" pattern="#,###"/>₫</div>
+
+            <!-- Màu -->
+            <div><fmt:message key="product_color"/></div>
+            <div class="color-selector">
+                <c:forEach var="option" items="${options}">
+                    <c:choose>
+                        <c:when test="${not empty option.color}">
+                            <input type="radio" name="color" value="${option.color}"
+                                   style="background-color: ${option.color};">
+                        </c:when>
+                        <c:otherwise>
+                            <div></div>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </div>
+            <div><fmt:message key="product_size"/></div>
+            <div class="size-buttons">
+                <c:forEach var="option" items="${options}">
+                    <c:if test="${not empty option.size}">
+                        <button class="size-button" id="${option.product_op_id}" data-size="${option.size}"
+                                onclick="selectSize(this)">${option.size}</button>
+                    </c:if>
+                </c:forEach>
+            </div>
+            <div>
+                <button class="buy-button"><fmt:message key="buy_now"/></button>
+                <button class="add-button"><fmt:message key="add_to_cart"/></button>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header"><fmt:message key="product_infor"/></div>
+                <div class="accordion-content">
+                    <div>
+                        ${product.description};
+                    </div>
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header"><fmt:message key="product_size_guide"/></div>
+                <div class="accordion-content">
+                    <p><fmt:message key="product_size_guide_des"/></p>
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header"><fmt:message key="delivery_policy"/></div>
+                <div class="accordion-content">
+                    <p><fmt:message key="delivery_policy_des"/></p>
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header"><fmt:message key="return_policy"/></div>
+                <div class="accordion-content">
+                    <p><fmt:message key="return_policy_des"/></p>
                 </div>
             </div>
         </div>
-        <div class="accordion">
-            <div class="accordion-header"><fmt:message key="product_size_guide"/></div>
-            <div class="accordion-content">
-                <p><fmt:message key="product_size_guide_des"/></p>
-            </div>
-        </div>
-        <div class="accordion">
-            <div class="accordion-header"><fmt:message key="delivery_policy"/></div>
-            <div class="accordion-content">
-                <p><fmt:message key="delivery_policy_des"/></p>
-            </div>
-        </div>
-        <div class="accordion">
-            <div class="accordion-header"><fmt:message key="return_policy"/></div>
-            <div class="accordion-content">
-                <p><fmt:message key="return_policy_des"/></p>
-            </div>
-        </div>
     </div>
-</div>
+</form>
+
 <div class="title" style="margin-left: 20px; text-align: center;"><fmt:message key="suggest_for_you"/></div>
 <div class="product-container">
     <div class="product">

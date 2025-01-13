@@ -197,56 +197,35 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header border-0">
-                <h5 class="modal-title" id="updateInfoModalLabel"><fmt:message key="account_cntt"/></h5>
+                <h5 class="modal-title" id="updateInfoModalLabel">CẬP NHẬT THÔNG TIN</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="${pageContext.request.contextPath}/AccountInfor" method="post">
                     <!-- Họ -->
                     <div class="mb-3">
-                        <label class="form-label" for="id_surname"><fmt:message key="account_ho"/></label>
+                        <label class="form-label" for="id_surname">Họ</label>
                         <input type="text" name="surname" id="id_surname" class="form-control"
-                               value="<c:choose>
-                                    <c:when test="${not empty sessionScope.user}">
-                                        <c:out value="${sessionScope.user.surname}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        ---
-                                    </c:otherwise>
-                                </c:choose>">
+                               value="<c:choose><c:when test="${not empty sessionScope.user}"><c:out value="${sessionScope.user.surname}"/></c:when><c:otherwise>---</c:otherwise></c:choose>">
                     </div>
 
                     <!-- Tên -->
                     <div class="mb-3">
-                        <label class="form-label"><fmt:message key="account_ten"/></label>
+                        <label class="form-label">Tên</label>
                         <input type="text" name="lastname" id="id_lastName" class="form-control"
-                               value="<c:choose>
-                                    <c:when test="${not empty sessionScope.user}">
-                                        <c:out value="${sessionScope.user.lastname}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        ---
-                                    </c:otherwise>
-                                </c:choose>">
+                               value="<c:choose><c:when test="${not empty sessionScope.user}"><c:out value="${sessionScope.user.lastname}"/></c:when><c:otherwise>---</c:otherwise></c:choose>">
                     </div>
 
                     <!-- Username -->
                     <div class="mb-3">
                         <label class="form-label">Username</label>
                         <input type="text" name="username" id="id_username" class="form-control"
-                               value="<c:choose>
-                                    <c:when test="${not empty sessionScope.user}">
-                                        <c:out value="${sessionScope.user.username}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        ---
-                                    </c:otherwise>
-                                </c:choose>">
+                               value="<c:choose><c:when test="${not empty sessionScope.user}"><c:out value="${sessionScope.user.username}"/></c:when><c:otherwise>---</c:otherwise></c:choose>">
                     </div>
 
                     <!-- Giới tính -->
                     <div class="mb-3">
-                        <label class="form-label"><fmt:message key="account_gender"/></label>
+                        <label class="form-label">Giới tính</label>
                         <div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="gender" id="female" value="Nữ">
@@ -264,46 +243,25 @@
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="text" class="form-control" name="email" id="id_email"
-                               value="<c:choose>
-                                    <c:when test="${not empty sessionScope.user}">
-                                        <c:out value="${sessionScope.user.email}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        ---
-                                    </c:otherwise>
-                                </c:choose>">
+                               value="<c:choose><c:when test="${not empty sessionScope.user}"><c:out value="${sessionScope.user.email}"/></c:when><c:otherwise>---</c:otherwise></c:choose>">
                     </div>
 
                     <!-- Số điện thoại -->
                     <div class="mb-3">
-                        <label class="form-label"><fmt:message key="account_sdt"/></label>
+                        <label class="form-label">Số điện thoại</label>
                         <input type="text" class="form-control" name="phone_num" id="id_phone_num"
-                               value="<c:choose>
-                                    <c:when test="${not empty sessionScope.user}">
-                                        <c:out value="${sessionScope.user.phone_num}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        ---
-                                    </c:otherwise>
-                                </c:choose>">
+                               value="<c:choose><c:when test="${not empty sessionScope.user}"><c:out value="${sessionScope.user.phone_num}"/></c:when><c:otherwise>---</c:otherwise></c:choose>">
                     </div>
 
                     <!-- Địa chỉ -->
                     <div class="mb-3">
-                        <label class="form-label"><fmt:message key="account_diaChi"/></label>
+                        <label class="form-label">Địa chỉ</label>
                         <input type="text" class="form-control" name="address" id="id_address"
-                               value="<c:choose>
-                                    <c:when test="${not empty sessionScope.user}">
-                                        <c:out value="${sessionScope.user.address}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        ---
-                                    </c:otherwise>
-                                </c:choose>">
+                               value="<c:choose><c:when test="${not empty sessionScope.user}"><c:out value="${sessionScope.user.address}"/></c:when><c:otherwise>---</c:otherwise></c:choose>">
                     </div>
 
                     <!-- Nút cập nhật -->
-                    <button type="submit" class="btn btn-dark w-100"><fmt:message key="account_up"/></button>
+                    <button type="submit" class="btn btn-dark w-100">Cập nhật</button>
                 </form>
             </div>
         </div>
