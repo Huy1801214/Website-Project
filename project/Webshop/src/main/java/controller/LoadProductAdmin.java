@@ -17,7 +17,7 @@ public class LoadProductAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Products> productsList = dao.selectAll();
         request.setAttribute("productsList", productsList);
-        request.getRequestDispatcher("/view/jsp/Products_admin.jsp").forward(request, response);
+        request.getRequestDispatcher("/view/jsp/admin/Products_admin.jsp").forward(request, response);
     }
 
     @Override

@@ -145,7 +145,30 @@ public class ProductDAO implements DAOInterface<Products> {
 
     @Override
     public int insert(Products products) {
-        return 0;
+        String query = "insert into product (product_name, img, description, in_price, out_price, quantity, " +
+                "selled_quantity, created_date, id_category) values (?,?,?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+
+            preparedStatement.setString(1, products.getProduct_name());
+            preparedStatement.setString(2, products.getImg());
+            preparedStatement.setString(3, products.getDescription());
+            preparedStatement.setBigDecimal(4, products.getIn_price());
+            preparedStatement.setBigDecimal(5, products.getOut_price());
+            preparedStatement.setInt(6, products.getQuantity());
+            preparedStatement.setInt(7, products.getSelled_quantity());
+            preparedStatement.setDate(8, products.getCreadted_date());
+            preparedStatement.setInt(9, products.getId_category());
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
 
     @Override

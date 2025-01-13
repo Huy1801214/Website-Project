@@ -20,13 +20,22 @@
         <img alt="Company Logo" height="50" src="#" width="50"/>
     </div>
     <div class="nav-links">
-        <a href="">Trang chủ</a>
-        <a href="${pageContext.request.contextPath}/view/jsp/Overview_admin.jsp">Tổng quan</a>
+        <a href="<c:url value="/LoadProduct"/>">Trang chủ</a>
+        <a href="${pageContext.request.contextPath}/view/jsp/admin/Overview_admin.jsp">Tổng quan</a>
         <a href="<c:url value="/LoadProductAdmin"/>">Sản phẩm</a>
         <a href="<c:url value="/LoadCustomerAdmin"/>">Quản lý khách hàng</a>
     </div>
     <div class="info-user">
-        <a href="">Thông tin tài khoản</a>
+        <c:choose>
+            <c:when test="${not empty sessionScope.user}">
+                <a href="<c:url value="/view/jsp/admin/AccountAdminInfor.jsp"/>"><c:out
+                        value="${sessionScope.user.username}"/>
+                </a>
+            </c:when>
+            <c:otherwise>
+                <a href="<c:url value="/view/jsp/Login.jsp"/>">Thông tin tài khoản</a>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 </body>

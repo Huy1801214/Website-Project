@@ -16,7 +16,7 @@
 </head>
 <body>
 <!-- Header -->
-<c:import url="../viewshare/Header_admin.jsp"></c:import>
+<c:import url="../../viewshare/Header_admin.jsp"></c:import>
 <!-- End Header -->
 
 <!-- Body -->
@@ -62,6 +62,6 @@
 </div>
 <!-- End body -->
 <!-- footer -->
-<c:import url="../viewshare/Footer.jsp"></c:import>
+<c:import url="../../viewshare/Footer.jsp"></c:import>
 </body>
 </html>

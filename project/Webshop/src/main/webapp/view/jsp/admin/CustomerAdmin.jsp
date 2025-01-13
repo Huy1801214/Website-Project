@@ -42,7 +42,7 @@
     </style>
 </head>
 <body>
-<c:import url="../viewshare/Header_admin.jsp"/>
+<c:import url="../../viewshare/Header_admin.jsp"/>
 <h2>Quản lý khách hàng</h2>
 <div class="search-add-container">
     <form action="#" class="search-form">
@@ -65,26 +65,28 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="user" items="${userList}">
+    <c:forEach var="customer" items="${customerList}">
         <tr>
-            <td>${user.id_user}</td>
-            <td>${user.username}</td>
-            <td>${user.email}</td>
-            <td>${user.phone_num}</td>
-            <td>${user.address}</td>
+            <td>${customer.id_user}</td>
+            <td>${customer.username}</td>
+            <td>${customer.email}</td>
+            <td>${customer.phone_num}</td>
+            <td>${customer.address}</td>
             <td>
-                <button class="btn btn-primary btn-edit btn-custom-dark" data-id="${user.id_user}">Xem chi tiết</button>
-                <form action="${pageContext.request.contextPath}/DeleteCustomerAdmin" method="get">
-                    <button class="btn btn-danger btn-delete btn-custom-gray" data-id="${user.id_user}">Xóa</button>
-                </form>
+                <a href="<c:url value="/ShowDetailCus">
+                    <c:param name="id_user" value="${customer.id_user}"/></c:url>"
+                   class="btn btn-primary btn-edit btn-custom-dark">Xem Chi Tiết</a>
+                <a href="<c:url value="/DeleteCustomerAdmin">
+                    <c:param name="id_user" value="${customer.id_user}"/></c:url>"
+                   class="btn btn-danger btn-delete btn-custom-gray">Xóa</a>
             </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 
-<script src="../js/products_admin.js"></script>
+<script src="../../js/products_admin.js"></script>
 <!-- Footer -->
-<c:import url="../viewshare/Footer.jsp"/>
+<c:import url="../../viewshare/Footer.jsp"/>
 </body>
 </html>

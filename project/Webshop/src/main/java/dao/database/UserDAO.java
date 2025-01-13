@@ -65,6 +65,34 @@ public class UserDAO implements DAOInterface<User> {
 
     @Override
     public User selectById(int id) {
+        String query = "select * from users where id_user = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        ResultSet resultSet = null;
+
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                User user = new User();
+                user.setId_user(resultSet.getInt("id_user"));
+                user.setId_role(resultSet.getInt("id_role"));
+                user.setSurname(resultSet.getString("surname"));
+                user.setLastname(resultSet.getString("lastname"));
+                user.setUsername(resultSet.getString("username"));
+                user.setGender(resultSet.getString("gender"));
+                user.setPhone_num(resultSet.getString("phone_num"));
+                user.setAddress(resultSet.getString("address"));
+                user.setEmail(resultSet.getString("email"));
+                user.setPassword(resultSet.getString("password"));
+
+                return user;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(resultSet, preparedStatement, DBConnect.getConnection());
+        }
         return null;
     }
 
@@ -103,7 +131,20 @@ public class UserDAO implements DAOInterface<User> {
 
     @Override
     public int delete(User user) {
-        return 0;
+        String query = "delete from users where id_user = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, user.getId_user());
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
 
     @Override
