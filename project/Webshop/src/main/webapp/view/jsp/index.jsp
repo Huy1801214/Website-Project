@@ -25,67 +25,7 @@
 </head>
 <body>
 <!-- Header-->
-<%--<div id="header-container"><c:import url="../viewshare/Header.jsp"/></div>--%>
-<header STYLE="background-color: white">
-    <div class="px-3 py-2 border-bottom">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="<c:url value="/LoadProduct"/>" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                    <img src="" alt="Company Logo" height="50"  width="50"/>
-                </a>
-
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="<c:url value="/LoadProduct"/>" class="nav-link px-2 link-secondary">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 link-body-emphasis">Shop</a></li>
-                    <li><a href="#" class="nav-link px-2 link-body-emphasis">Features</a></li>
-                    <li><a href="#" class="nav-link px-2 link-body-emphasis">About</a></li>
-                </ul>
-
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="${pageContext.request.contextPath}/SearchProduct" method="get">
-                    <div class="position-relative">
-                        <input class="form-control" name="keyword" type="search" placeholder="Search" aria-label="Search" style="padding-right: 40px;">
-                        <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3" style="pointer-events: none; color: gray;"></i>
-                    </div>
-                </form>
-
-
-                <div class="nav-icons">
-                    <%-- Hiển thị username nếu có user trong session --%>
-                    <c:choose>
-                        <c:when test="${not empty sessionScope.user}">
-                            <a href="<c:url value="/view/jsp/account_infor.jsp"/>"><c:out
-                                    value="${sessionScope.user.username}"/> <i class="fas fa-user"></i>
-                            </a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="<c:url value="/view/jsp/Login.jsp"/>">Đăng nhập <i class="fas fa-user"></i>
-                            </a>
-                        </c:otherwise>
-                    </c:choose>
-
-                    <a href="<c:url value="/view/jsp/Shopping_cart.jsp"/>"><i class="fas fa-shopping-bag"></i><span
-                            id="cart-count">0</span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="px-3 py-2 border-bottom mb-3">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="all"/></c:url>" class="nav-link px-2 link-secondary">ALL</a></li>
-                    <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
-                <c:param name="id_category" value="1"/></c:url>" class="nav-link px-2 link-body-emphasis">ÁO THUN</a></li>
-                    <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
-                <c:param name="id_category" value="2"/></c:url>" class="nav-link px-2 link-body-emphasis">QUẦN</a></li>
-                    <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
-                <c:param name="id_category" value="3"/></c:url>" class="nav-link px-2 link-body-emphasis">PHỤ KIỆN</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</header>
+<div id="header-container"><c:import url="../viewshare/Header.jsp"/></div>
 <!-- End Header-->
 
 <div id="cookie-banner">
@@ -99,7 +39,7 @@
 </div>
 
 <%--Slider--%>
-<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" style="width: 100vw; margin-left: calc(-50vw + 50%);">
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" style="width: 100vw; margin-left: calc(-50vw + 50%); margin-top: 70px">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active"

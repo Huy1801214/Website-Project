@@ -25,29 +25,46 @@
 
 </head>
 <body>
-<header class="p-3 mb-3 border-bottom">
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
+
+<header class="p-3 mb-3 border-bottom" style="background-color: white">
     <div class="container" style="border-bottom: solid thick black; padding-bottom: 10px">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="<c:url value="/LoadProduct"/>" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                <img src="" alt="Company Logo" height="50"  width="50"/>
+            <a href="<c:url value="/LoadProduct"/>"
+               class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                <img src="" alt="Company Logo" height="50" width="50"/>
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="<c:url value="/LoadProduct"/>" class="nav-link px-2 link-secondary">Home</a></li>
-                <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="all"/></c:url>" class="nav-link px-2 link-body-emphasis">Shop</a></li>
-                <li><a href="<c:url value="/view/jsp/admin/Overview_admin.jsp"/>" class="nav-link px-2 link-body-emphasis">Admin View</a></li>
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">About</a></li>
+                <li><a href="<c:url value="/LoadProduct"/>" class="nav-link px-2 link-secondary"><fmt:message
+                        key="header_home"/></a></li>
+                <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="all"/></c:url>"
+                       class="nav-link px-2 link-body-emphasis"><fmt:message key="header_shop"/></a></li>
+                <li><a href="<c:url value="/view/jsp/admin/Overview_admin.jsp"/>"
+                       class="nav-link px-2 link-body-emphasis"><fmt:message key="header_admin_view"/></a></li>
+                <li><a href="#" class="nav-link px-2 link-body-emphasis"><fmt:message key="header_about"/></a></li>
             </ul>
 
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="${pageContext.request.contextPath}/SearchProduct" method="get">
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search"
+                  action="${pageContext.request.contextPath}/SearchProduct" method="get">
                 <div class="position-relative">
-                    <input class="form-control" name="keyword" type="search" placeholder="Search" aria-label="Search" style="padding-right: 40px;">
-                    <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3" style="pointer-events: none; color: gray;"></i>
+                    <input class="form-control" name="keyword" type="search" placeholder="Search" aria-label="Search"
+                           style="padding-right: 40px;">
+                    <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3"
+                       style="pointer-events: none; color: gray;"></i>
                 </div>
             </form>
 
 
             <div class="nav-icons">
+                <form action="<c:url value="/ChangeLanguage"/>" method="get">
+                    <select id="langSelect" name="lang" class="form-select me-2" style="width: 100px;"
+                            onchange="this.form.submit()">
+                        <option value="en" ${sessionScope.lang == 'en' ? 'selected' : ''}>English</option>
+                        <option value="vi" ${sessionScope.lang == 'vi' ? 'selected' : ''}>Tiếng Việt</option>
+                    </select>
+                </form>
                 <%-- Hiển thị username nếu có user trong session --%>
                 <c:choose>
                     <c:when test="${not empty sessionScope.user}">
@@ -56,7 +73,8 @@
                         </a>
                     </c:when>
                     <c:otherwise>
-                        <a href="<c:url value="/view/jsp/Login.jsp"/>">Đăng nhập <i class="fas fa-user"></i>
+                        <a href="<c:url value="/view/jsp/Login.jsp"/>"><fmt:message key="header_login"/><i
+                                class="fas fa-user"></i>
                         </a>
                     </c:otherwise>
                 </c:choose>
@@ -70,13 +88,21 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="all"/></c:url>" class="nav-link px-2 link-secondary">ALL</a></li>
+                <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="all"/></c:url>"
+                       class="nav-link px-2 link-secondary"><fmt:message key="header_all"/></a></li>
+
                 <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
-                <c:param name="id_category" value="1"/></c:url>" class="nav-link px-2 link-body-emphasis">ÁO</a></li>
+                <c:param name="id_category" value="1"/></c:url>" class="nav-link px-2 link-body-emphasis">
+                    <fmt:message key="header_tops"/></a></li>
+
                 <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
-                <c:param name="id_category" value="2"/></c:url>" class="nav-link px-2 link-body-emphasis">QUẦN</a></li>
+                <c:param name="id_category" value="2"/></c:url>" class="nav-link px-2 link-body-emphasis">
+                    <fmt:message key="header_bottoms"/></a></li>
+
                 <li><a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
-                <c:param name="id_category" value="3"/></c:url>" class="nav-link px-2 link-body-emphasis">PHỤ KIỆN</a></li>
+                <c:param name="id_category" value="3"/></c:url>" class="nav-link px-2 link-body-emphasis">
+                    <fmt:message key="header_accessories"/></a>
+                </li>
             </ul>
         </div>
     </div>

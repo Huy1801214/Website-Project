@@ -15,9 +15,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/footer.css">
 </head>
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
+
 <footer id="footer" class="footer">
     <div>
-        <h3>HỘ KINH DOANH</h3>
+        <h3><fmt:message key="footer_kinhdoanh"/></h3>
         <p class="text">Giấy chứng nhận ĐKKD số 4108035777 do Trường Đại Học Nông Lâm cấp lần đầu ngày 28/02/2025</p>
         <p class="text">Địa chỉ: 350 Điện Biên Phủ, phường 17, Hồ Chí Minh</p>
         <p class="text">Email: 22130099@gmail.com</p>
@@ -28,13 +31,13 @@
     </div>
     <div>
         <h3>Liên kết</h3>
-        <p class="text"><a class="link" href="#">Chính sách bảo mật</a></p>
-        <p class="text"><a class="link" href="#">Hướng dẫn mua hàng</a></p>
-        <p class="text"><a class="link" href="#">Chính sách đổi trả</a></p>
-        <p class="text"><a class="link" href="#">Hướng dẫn thanh toán</a></p>
+        <p class="text"><a class="link" href="#"><fmt:message key="footer_baomat"/></a></p>
+        <p class="text"><a class="link" href="#"><fmt:message key="footer_hdsd"/></a></p>
+        <p class="text"><a class="link" href="#"><fmt:message key="footer_chinhsach"/></a></p>
+        <p class="text"><a class="link" href="#"><fmt:message key="footer_hdthanhtoan"/></a></p>
     </div>
     <div>
-        <h3>Thông tin liên hệ</h3>
+        <h3><fmt:message key="footer_lienhe"/></h3>
         <p class="text">* FLAGSHIP STORE: 26 Trần Quang Diệu, phường 14, quận 3</p>
         <p class="text">* Đồng Nai: 47 Dương Tử Giang, phường Tân Tiến, TP. Biên Hoà</p>
         <p class="text">https://www.facebook.com/TSUN.SG</p>

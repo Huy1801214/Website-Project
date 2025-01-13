@@ -89,6 +89,7 @@ public class CookieConsentFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpSession session = httpRequest.getSession(true); // luôn tạo session
+
         boolean useCookie = false;
         Object cookieConsent = session.getAttribute("cookieConsent");
 
