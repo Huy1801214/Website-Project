@@ -32,7 +32,7 @@ public class Order extends HttpServlet {
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
-        byte payMethod = Byte.parseByte(request.getParameter("pay_method"));
+        byte payMethod = 1;
 
         ShoppingCart cart = shoppingCartDAO.selectById(id_user);
 
@@ -70,6 +70,6 @@ public class Order extends HttpServlet {
             shoppingCartDAO.delete(cart);
         }
         System.out.println("thanh toan thanh cong");
-        response.sendRedirect("/LoadProduct");
+        response.sendRedirect(request.getContextPath() + "/LoadProduct");
     }
 }

@@ -123,32 +123,51 @@
         <div class="title">MADE DIFFERENT</div>
         <div id="left">
             <div>
-                <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg1.png?v=2334"
-                     style="width: 100%;" alt="">
+                <a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
+                <c:param name="id_category" value="2"/></c:url>" class="nav-link px-2 link-body-emphasis">
+                    <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg1.png?v=2334"
+                         style="width: 100%;" alt=""></a>
+
             </div>
             <div>
-                <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg4.png?v=2334"
-                     style="width: 100%;" alt="">
+                <a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
+                <c:param name="id_category" value="2"/></c:url>" class="nav-link px-2 link-body-emphasis">
+                    <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg4.png?v=2334"
+                                                            style="width: 100%;" alt=""></a>
+
             </div>
         </div>
         <div id="center">
             <div>
-                <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg2.png?v=2334"
-                     style="width: 100%;" alt="">
+               <a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
+                <c:param name="id_category" value="1"/></c:url>" class="nav-link px-2 link-body-emphasis">
+                    <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg2.png?v=2334"
+                         style="width: 100%;" alt="">
+                    </a>
+
             </div>
             <div>
-                <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg5.png?v=2334"
-                     style="width: 100%;" alt="">
+                <a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
+                <c:param name="id_category" value="1"/></c:url>" class="nav-link px-2 link-body-emphasis">
+                    <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg5.png?v=2334"
+                         style="width: 100%;" alt="">
+                </a>
+
             </div>
         </div>
         <div id="right">
             <div>
-                <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg3.png?v=2334"
-                     style="width: 100%;" alt="">
+                <a href="<c:url value="/ProductCategory"><c:param name="action" value="all"/></c:url>"
+                   class="nav-link px-2 link-secondary"><img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg3.png?v=2334"
+                                                             style="width: 100%;" alt=""></a>
+
             </div>
             <div>
-                <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg6.png?v=2334"
-                     style="width: 100%;" alt="">
+                <a href="<c:url value="/ProductCategory"><c:param name="action" value="category"/>
+                <c:param name="id_category" value="3"/></c:url>" class="nav-link px-2 link-body-emphasis">
+                    <img src="https://theme.hstatic.net/200000677367/1001276449/14/drlifestiimimg6.png?v=2334"
+                         style="width: 100%;" alt=""></a>
+
             </div>
         </div>
     </div>

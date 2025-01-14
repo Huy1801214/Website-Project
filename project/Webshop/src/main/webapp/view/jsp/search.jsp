@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
   <title>Search result</title>
@@ -204,7 +205,7 @@
 
 <div class="container mt-4">
   <div class="product-count">
-    3 sản phẩm
+    ${fn:length(products)} sản phẩm
   </div>
 
   <div class="row">

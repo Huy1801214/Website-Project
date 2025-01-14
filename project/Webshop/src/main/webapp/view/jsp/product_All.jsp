@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <title>Products all</title>
@@ -200,9 +201,8 @@
 
 <div class="container mt-4">
     <div class="product-count">
-        3 sản phẩm
+        ${fn:length(products)} sản phẩm
     </div>
-
     <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3">
@@ -290,7 +290,7 @@
 
                         <button class="btn btn-primary add-to-cart-btn">THÊM VÀO GIỎ</button>
                         <div class="text-center mt-2">
-                                <a href="#" class="view-detail-link">hoặc Xem chi tiết</a>
+                            <a href="#" class="view-detail-link">hoặc Xem chi tiết</a>
                         </div>
                     </div>
                 </div>
