@@ -3,39 +3,60 @@ package model;
 import java.time.LocalDateTime;
 
 public class ShoppingCart {
-    private int id_cart;
-    private int id_user;
-    private LocalDateTime date;
+    private int idCart;
+    private int idUser;
+    private LocalDateTime createdAt;
+    private Integer idProduct;
+    private Integer quantity;
 
-    public ShoppingCart() {}
-
-    public ShoppingCart(int id_cart, int id_user, LocalDateTime date) {
-        this.id_cart = id_cart;
-        this.id_user = id_user;
-        this.date = date;
+    public ShoppingCart() {
     }
 
-    public int getId_cart() {
-        return id_cart;
+    public ShoppingCart(int idCart, int idUser, LocalDateTime createdAt, Integer idProduct, Integer quantity) {
+        this.idCart = idCart;
+        this.idUser = idUser;
+        this.createdAt = createdAt;
+        this.idProduct = idProduct;
+        this.quantity = quantity;
     }
 
-    public void setId_cart(int id_cart) {
-        this.id_cart = id_cart;
+    public int getIdCart() {
+        return idCart;
     }
 
-    public int getId_user() {
-        return id_user;
+    public void setIdCart(int idCart) {
+        this.idCart = idCart;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Integer getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(Integer idProduct) {
+        this.idProduct = idProduct;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

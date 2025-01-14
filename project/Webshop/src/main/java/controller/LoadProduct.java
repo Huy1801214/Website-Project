@@ -7,7 +7,6 @@ import jakarta.servlet.annotation.*;
 import model.Products;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "LoadProduct", value = "/LoadProduct")
@@ -18,6 +17,7 @@ public class LoadProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Products> products;
         products = dao.selectAll();
+
 
         if(products.isEmpty()){
             System.out.println("Loi database");

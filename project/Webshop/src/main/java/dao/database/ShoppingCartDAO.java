@@ -2,37 +2,46 @@ package dao.database;
 
 import dao.db.DBConnect;
 import model.ShoppingCart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 public class ShoppingCartDAO implements DAOInterface<ShoppingCart> {
 
     private static final Logger logger = LoggerFactory.getLogger(ShoppingCartDAO.class);
+
     @Override
     public int insert(ShoppingCart shoppingCart) {
-        String query = "insert into shopping_cart (id_cart, id_user, date) value(?, ?, ?)";
+        String query = "INSERT INTO shopping_cart (id_user, created_at, id_product, quantity) VALUES (?, ?, ?, ?)";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         int rs = 0;
         try {
             assert preparedStatement != null;
+            preparedStatement.setInt(1, shoppingCart.getIdUser());
 
-            preparedStatement.setInt(1, shoppingCart.getId_cart());
-            preparedStatement.setInt(2, shoppingCart.getId_user());
-            // Convert LocalDateTime to Timestamp and then to SQL Date
-            LocalDateTime localDateTime = shoppingCart.getDate();
+            LocalDateTime localDateTime = shoppingCart.getCreatedAt();
             if (localDateTime != null) {
                 Timestamp timestamp = Timestamp.valueOf(localDateTime);
-                preparedStatement.setTimestamp(3,timestamp);
-            } else{
-                preparedStatement.setTimestamp(3,null);
+                preparedStatement.setTimestamp(2, timestamp);
+            } else {
+                preparedStatement.setTimestamp(2, null);
+            }
+
+
+            Integer idProduct = shoppingCart.getIdProduct();
+            if (idProduct != null) {
+                preparedStatement.setInt(3, idProduct);
+            } else {
+                preparedStatement.setNull(3, Types.INTEGER);
+            }
+            Integer quantity = shoppingCart.getQuantity();
+            if (quantity != null) {
+                preparedStatement.setInt(4, quantity);
+            } else {
+                preparedStatement.setNull(4, Types.INTEGER);
             }
 
 
@@ -47,7 +56,7 @@ public class ShoppingCartDAO implements DAOInterface<ShoppingCart> {
 
     @Override
     public ShoppingCart selectById(int id) {
-        String query = "select * from shopping_cart where id_user = ?";
+        String query = "SELECT * FROM shopping_cart WHERE id_user = ?";
         PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
         ResultSet resultSet = null;
 
@@ -57,15 +66,25 @@ public class ShoppingCartDAO implements DAOInterface<ShoppingCart> {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 ShoppingCart shoppingCart = new ShoppingCart();
-                shoppingCart.setId_cart(resultSet.getInt("id_cart"));
-                shoppingCart.setId_user(resultSet.getInt("id_user"));
+                shoppingCart.setIdCart(resultSet.getInt("id_cart"));
+                shoppingCart.setIdUser(resultSet.getInt("id_user"));
 
                 // Convert SQL Date to LocalDateTime
-                Timestamp timestamp = resultSet.getTimestamp("date");
+                Timestamp timestamp = resultSet.getTimestamp("created_at");
                 if (timestamp != null) {
                     LocalDateTime localDateTime = timestamp.toLocalDateTime();
-                    shoppingCart.setDate(localDateTime);
+                    shoppingCart.setCreatedAt(localDateTime);
                 }
+
+                int idProduct = resultSet.getInt("id_product");
+                if (!resultSet.wasNull()) {
+                    shoppingCart.setIdProduct(idProduct);
+                }
+                int quantity = resultSet.getInt("quantity");
+                if (!resultSet.wasNull()) {
+                    shoppingCart.setQuantity(quantity);
+                }
+
                 return shoppingCart;
             }
         } catch (SQLException e) {
@@ -75,6 +94,7 @@ public class ShoppingCartDAO implements DAOInterface<ShoppingCart> {
         }
         return null;
     }
+
 
     @Override
     public ArrayList<ShoppingCart> selectAll() {
@@ -98,6 +118,23 @@ public class ShoppingCartDAO implements DAOInterface<ShoppingCart> {
 
     @Override
     public int update(ShoppingCart shoppingCart) {
-        return 0;
+        String query = "UPDATE shopping_cart SET id_product = ?, quantity = ? WHERE id_cart = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+
+            preparedStatement.setInt(1, shoppingCart.getIdProduct());
+            preparedStatement.setInt(2, shoppingCart.getQuantity());
+            preparedStatement.setInt(3, shoppingCart.getIdCart());
+
+
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Lỗi khi cập nhật giỏ hàng", e);
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
 }

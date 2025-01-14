@@ -79,7 +79,7 @@
                     </c:otherwise>
                 </c:choose>
 
-                <a href="<c:url value="/view/jsp/Shopping_cart.jsp"/>"><i class="fas fa-shopping-bag"></i><span
+                <a href="<c:url value="/ViewCart"/>"><i class="fas fa-shopping-bag"></i><span
                         id="cart-count">0</span></a>
             </div>
         </div>

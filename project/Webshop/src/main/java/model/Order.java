@@ -4,86 +4,95 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Order {
-    int id_order, id_user, id_cart;
-    LocalDateTime order_date;
-    int id_voucher;
-    BigDecimal total_price;
-    int id_address;
-    String note;
-    int pay_method;
-    String status;
+    private int idOrder;
+    private int idUser;
+    private int idCart;
+    private LocalDateTime orderDate;
+    private Integer idVoucher;
+    private BigDecimal totalPrice;
+    private int idAddress;
+    private String note;
+    private byte payMethod;
+    private String status;
+    private int idProduct;
+    private int quantity;
+    private BigDecimal price;
+
 
     public Order() {
     }
 
-    public Order(int id_order, int id_user, int id_cart, LocalDateTime order_date, int id_voucher, BigDecimal total_price,
-                 int id_address, String note, int pay_method, String status) {
-        this.id_order = id_order;
-        this.id_user = id_user;
-        this.id_cart = id_cart;
-        this.order_date = order_date;
-        this.id_voucher = id_voucher;
-        this.total_price = total_price;
-        this.id_address = id_address;
+    public Order(int idOrder, int idUser, int idCart, LocalDateTime orderDate, Integer idVoucher, BigDecimal totalPrice,
+                 int idAddress, String note, byte payMethod, String status, int idProduct, int quantity, BigDecimal price) {
+        this.idOrder = idOrder;
+        this.idUser = idUser;
+        this.idCart = idCart;
+        this.orderDate = orderDate;
+        this.idVoucher = idVoucher;
+        this.totalPrice = totalPrice;
+        this.idAddress = idAddress;
         this.note = note;
-        this.pay_method = pay_method;
+        this.payMethod = payMethod;
         this.status = status;
+        this.idProduct = idProduct;
+        this.quantity = quantity;
+        this.price = price;
     }
 
-    public int getId_order() {
-        return id_order;
+    public int getIdOrder() {
+        return idOrder;
     }
 
-    public void setId_order(int id_order) {
-        this.id_order = id_order;
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
     }
 
-    public int getId_user() {
-        return id_user;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public int getId_cart() {
-        return id_cart;
+    public int getIdCart() {
+        return idCart;
     }
 
-    public void setId_cart(int id_cart) {
-        this.id_cart = id_cart;
+    public void setIdCart(int idCart) {
+        this.idCart = idCart;
     }
 
-    public LocalDateTime getOrder_date() {
-        return order_date;
+    public LocalDateTime getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrder_date(LocalDateTime order_date) {
-        this.order_date = order_date;
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public int getId_voucher() {
-        return id_voucher;
+    public Integer getIdVoucher() {
+        return idVoucher;
     }
 
-    public void setId_voucher(int id_voucher) {
-        this.id_voucher = id_voucher;
+    public void setIdVoucher(Integer idVoucher) {
+        this.idVoucher = idVoucher;
     }
 
-    public BigDecimal getTotal_price() {
-        return total_price;
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal_price(BigDecimal total_price) {
-        this.total_price = total_price;
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public int getId_address() {
-        return id_address;
+    public int getIdAddress() {
+        return idAddress;
     }
 
-    public void setId_address(int id_address) {
-        this.id_address = id_address;
+    public void setIdAddress(int idAddress) {
+        this.idAddress = idAddress;
     }
 
     public String getNote() {
@@ -94,12 +103,12 @@ public class Order {
         this.note = note;
     }
 
-    public int getPay_method() {
-        return pay_method;
+    public byte getPayMethod() {
+        return payMethod;
     }
 
-    public void setPay_method(int pay_method) {
-        this.pay_method = pay_method;
+    public void setPayMethod(byte payMethod) {
+        this.payMethod = payMethod;
     }
 
     public String getStatus() {
@@ -108,5 +117,29 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

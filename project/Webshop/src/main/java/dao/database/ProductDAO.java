@@ -201,30 +201,30 @@ public class ProductDAO implements DAOInterface<Products> {
 
     @Override
     public int update(Products products) {
-            String query = "update product set product_name = ?, img = ?, description = ?, in_price = ?, out_price = ?, " +
-                    "quantity = ?, selled_quantity = ?, created_date = ?, id_category = ? where id_product = ?";
-            PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
-            int rs = 0;
-            try {
-                assert preparedStatement != null;
-                preparedStatement.setString(1, products.getProduct_name());
-                preparedStatement.setString(2, products.getImg());
-                preparedStatement.setString(3, products.getDescription());
-                preparedStatement.setBigDecimal(4, products.getIn_price());
-                preparedStatement.setBigDecimal(5, products.getOut_price());
-                preparedStatement.setInt(6, products.getQuantity());
-                preparedStatement.setInt(7, products.getSelled_quantity());
-                preparedStatement.setDate(8, products.getCreadted_date());
-                preparedStatement.setInt(9, products.getId_category());
-                preparedStatement.setInt(10, products.getId_product());
+        String query = "update product set product_name = ?, img = ?, description = ?, in_price = ?, out_price = ?, " +
+                "quantity = ?, selled_quantity = ?, created_date = ?, id_category = ? where id_product = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+        int rs = 0;
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setString(1, products.getProduct_name());
+            preparedStatement.setString(2, products.getImg());
+            preparedStatement.setString(3, products.getDescription());
+            preparedStatement.setBigDecimal(4, products.getIn_price());
+            preparedStatement.setBigDecimal(5, products.getOut_price());
+            preparedStatement.setInt(6, products.getQuantity());
+            preparedStatement.setInt(7, products.getSelled_quantity());
+            preparedStatement.setDate(8, products.getCreadted_date());
+            preparedStatement.setInt(9, products.getId_category());
+            preparedStatement.setInt(10, products.getId_product());
 
-                rs = preparedStatement.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                DBConnect.close(null, preparedStatement, DBConnect.getConnection());
-            }
-            return rs;
+            rs = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
+        return rs;
     }
 
     public static void main(String[] args) {
@@ -249,5 +249,22 @@ public class ProductDAO implements DAOInterface<Products> {
             DBConnect.close(null, preparedStatement, DBConnect.getConnection());
         }
         return rs;
+    }
+
+    public void updateSelledQuantity(int id_product, int selledQuantity) {
+        String query = "UPDATE product SET selled_quantity = ? WHERE id_product = ?";
+        PreparedStatement preparedStatement = DBConnect.getPreparedStatement(query);
+
+        try {
+            assert preparedStatement != null;
+            preparedStatement.setInt(1, selledQuantity);
+            preparedStatement.setInt(2, id_product);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnect.close(null, preparedStatement, DBConnect.getConnection());
+        }
     }
 }

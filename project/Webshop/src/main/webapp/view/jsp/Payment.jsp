@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mypc
-  Date: 1/3/2025
-  Time: 4:03 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -12,11 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/payment.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/payment.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Thanh toán</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <title><fmt:message key="checkout"/></title>
 </head>
 <body>
+<fmt:setLocale value="${sessionScope.locale}" scope="session"/>
+<fmt:setBundle basename="messages" scope="session"/>
 <!-- Header-->
 <div id="header-container"><c:import url="../viewshare/Header.jsp"/></div>
 <!-- End Header-->
@@ -28,15 +29,15 @@
             <div class="checkout-header">
                 <h1>SOUSTATE</h1>
                 <nav>
-                    <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp">Giỏ hàng</a>
+                    <a href="${pageContext.request.contextPath}/ViewCart"><fmt:message key="shopping_cart"/></a>
                     <span>></span>
-                    <a href="#" class="active" class="breadcrumb-shipping">Thông tin giao hàng</a>
+                    <a href="#" class="active" class="breadcrumb-shipping"><fmt:message key="delivery_info"/></a>
                     <span>></span>
-                    <a href="#" class="breadcrumb-payment">Phương thức thanh toán</a>
+                    <a href="#" class="breadcrumb-payment"><fmt:message key="payment_method"/></a>
                 </nav>
             </div>
 
-            <h2>Thông tin giao hàng</h2>
+            <h2><fmt:message key="delivery_info"/></h2>
             <div class="user-info">
                 <i class="fas fa-user"></i>
                 <div class="user-info-text">
@@ -44,125 +45,143 @@
                     <a href="#">Đăng xuất</a>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="name">Họ và tên</label>
-                <input type="text" id="name" name="name" value="Anh Huy" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Số điện thoại</label>
-                <input type="text" id="phone" name="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="address">Địa chỉ</label>
-                <input type="text" id="address" name="address" placeholder="Nhập địa chỉ" required>
-            </div>
-            <div class="form-group">
-                <div class="address-group">
-                    <select name="province" id="province">
-                        <option value="" disabled selected>Chọn tỉnh / thành</option>
-                    </select>
-                    <select name="district" id="district">
-                        <option value="" disabled selected>Chọn quận / huyện</option>
-                    </select>
-                    <select name="ward" id="ward">
-                        <option value="" disabled selected>Chọn phường / xã</option>
-                    </select>
+            <form action="${pageContext.request.contextPath}/place-order" method="post">
+                <div class="form-group">
+                    <label for="name"><fmt:message key="name"/></label>
+                    <input type="text" id="name" name="name" value="Anh Huy" required>
                 </div>
-            </div>
-            <div class="cart-next-group">
-                <div class="back-to-cart">
-                    <a href="#">Giỏ hàng</a>
+                <div class="form-group">
+                    <label for="phone"><fmt:message key="phone_number"/></label>
+                    <input type="tel" id="phone" name="phone" required>
                 </div>
-                <button class="next-button" id="next-to-payment">Tiếp tục đến phương thức thanh toán</button>
-            </div>
-
+                <div class="form-group">
+                    <label for="address"><fmt:message key="address"/></label>
+                    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ" required>
+                </div>
+                <div class="form-group">
+                    <div class="address-group">
+                        <select name="province" id="province">
+                            <option value="" disabled selected>Chọn tỉnh / thành</option>
+                        </select>
+                        <select name="district" id="district">
+                            <option value="" disabled selected>Chọn quận / huyện</option>
+                        </select>
+                        <select name="ward" id="ward">
+                            <option value="" disabled selected>Chọn phường / xã</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="cart-next-group">
+                    <div class="back-to-cart">
+                        <a href="${pageContext.request.contextPath}/ViewCart"><fmt:message key="shopping_cart"/></a>
+                    </div>
+                    <button class="next-button" id="next-to-payment"><fmt:message key="next_to_payment"/></button>
+                </div>
+            </form>
         </section>
         <section class="payment-info" id="payment-section" style="display:none;">
             <div class="checkout-header">
                 <h1>SOUSTATE</h1>
                 <nav>
-                    <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp">Giỏ hàng</a>
+                    <a href="${pageContext.request.contextPath}/ViewCart"><fmt:message key="shopping_cart"/></a>
                     <span>></span>
-                    <a href="#" class="breadcrumb-shipping">Thông tin giao hàng</a>
+                    <a href="#" class="breadcrumb-shipping"><fmt:message key="delivery_info"/></a>
                     <span>></span>
-                    <a href="#" class="active" class="breadcrumb-payment">Phương thức thanh toán</a>
+                    <a href="#" class="active" class="breadcrumb-payment"><fmt:message key="payment_method"/></a>
                 </nav>
             </div>
-            <h2>Phương thức vận chuyển</h2>
+            <h2><fmt:message key="shipping_method"/></h2>
             <div class="shipping-methods">
                 <label>
                     <input type="radio" name="shipping-method" value="free" checked>
-                    <span>Free ship cho đơn hàng từ 500K</span>
+                    <span><fmt:message key="free_ship_order_from"/> 500K</span>
                     <span class="price">0đ</span>
                 </label>
             </div>
-            <h2>Phương thức thanh toán</h2>
+            <h2><fmt:message key="payment_method"/></h2>
             <div class="payment-methods">
                 <label>
-                    <input type="radio" name="payment-method" value="momo" checked>
-                    <img src="momo.png" alt="Ví MoMo">
-                    <span>Ví MoMo</span>
+                    <input type="radio" name="pay_method" value="1" checked>
+                    <img src="${pageContext.request.contextPath}/view/image/momo.png" alt="Ví MoMo">
+                    <span><fmt:message key="momo"/></span>
                 </label>
                 <label>
-                    <input type="radio" name="payment-method" value="momo-later">
-                    <img src="momo-paylater.png" alt="Ví Trả Sau - MoMo">
-                    <span>Ví Trả Sau - MoMo</span>
+                    <input type="radio" name="pay_method" value="2">
+                    <img src="${pageContext.request.contextPath}/view/image/momo-paylater.png" alt="Ví Trả Sau - MoMo">
+                    <span><fmt:message key="momo_paylater"/></span>
                 </label>
                 <label>
-                    <input type="radio" name="payment-method" value="cod">
-                    <img src="cod.png" alt="Thanh toán khi giao hàng (COD)">
-                    <span>Thanh toán khi giao hàng (COD)</span>
+                    <input type="radio" name="pay_method" value="3">
+                    <img src="${pageContext.request.contextPath}/view/image/cod.png"
+                         alt="Thanh toán khi giao hàng (COD)">
+                    <span><fmt:message key="cod"/></span>
                 </label>
             </div>
             <div class="payment-footer">
                 <div class="back-to-cart">
-                    <a href="${pageContext.request.contextPath}/view/jsp/Shopping_cart.jsp">Giỏ hàng</a>
+                    <a href="${pageContext.request.contextPath}/ViewCart"><fmt:message key="shopping_cart"/></a>
                 </div>
-                <button class="next-button" id="complete-order">Hoàn tất đơn hàng</button>
+                <form action="${pageContext.request.contextPath}/OrderSer" method="post">
+                    <button type="submit" class="next-button" id="complete-order"><fmt:message key="place_order"/></button>
+                </form>
             </div>
         </section>
         <section class="order-summary">
-            <div class="item">
-                <img src="product1.jpg" alt="Product 1">
-                <div class="item-info">
-                    <h3>BASIC LOGO SWEATPANTS</h3>
-                    <p>Flatium / M</p>
-                </div>
-                <span class="price">620,000đ</span>
-            </div>
-            <div class="item">
-                <img src="product2.jpg" alt="Product 2">
-                <div class="item-info">
-                    <h3>[KIDS] BASIC LOGO SWEATSHORTS</h3>
-                    <p>Flatium / 1</p>
-                </div>
-                <span class="price">320,000đ</span>
-            </div>
+            <c:if test="${not empty cart}">
+                <c:set var="totalCartPrice" value="0"/>
+                <c:forEach var="cartItem" items="${cart}">
+                    <c:set var="totalItemPrice"
+                           value="${cartItem.quantity * cartItem.product.out_price}"/>
+                    <c:set var="totalCartPrice" value="${totalCartPrice + totalItemPrice}"/>
+                    <div class="item">
+                        <img src="${cartItem.product.img}" alt="${cartItem.product.product_name}">
+                        <div class="item-info">
+                            <h3>${cartItem.product.product_name}</h3>
+                        </div>
+                        <span class="price"><fmt:formatNumber value="${cartItem.product.out_price}"
+                                                              pattern="#,###"/>đ</span>
+                    </div>
+                </c:forEach>
+            </c:if>
+            <c:if test="${empty cart}">
+                <p><fmt:message key="no_product_in_cart"/></p>
+            </c:if>
             <div class="discount">
-                <input type="text" placeholder="Mã giảm giá">
-                <button>Sử dụng</button>
+                <input type="text" placeholder="<fmt:message key="discount_code"/>">
+                <button><fmt:message key="apply"/></button>
             </div>
             <div class="summary-info">
                 <div class="subtotal">
-                    <span>Tạm tính</span>
-                    <span class="price">940,000đ</span>
+                    <span><fmt:message key="subtotal"/></span>
+                    <c:if test="${not empty cart}">
+                        <span class="price"><fmt:formatNumber value="${totalCartPrice}" pattern="#,###"/>đ</span>
+                    </c:if>
+                    <c:if test="${empty cart}">
+                        <span class="price">0đ</span>
+                    </c:if>
                 </div>
                 <div class="shipping">
-                    <span>Phí vận chuyển</span>
-                    <span class="price">Miễn phí</span>
+                    <span><fmt:message key="shipping_fee"/></span>
+                    <span class="price"><fmt:message key="free"/></span>
                 </div>
                 <div class="total">
-                    <span>Tổng cộng</span>
-                    <span class="price">940,000đ</span>
+                    <span><fmt:message key="total_price"/></span>
+                    <c:if test="${not empty cart}">
+                        <span class="price"><fmt:formatNumber value="${totalCartPrice}" pattern="#,###"/>đ</span>
+                    </c:if>
+                    <c:if test="${empty cart}">
+                        <span class="price">0đ</span>
+                    </c:if>
                 </div>
             </div>
         </section>
+        </form>
     </main>
 </div>
 <!--Footer-->
 <div><c:import url="../viewshare/Footer.jsp"/></div>
 <!-- End Footer-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-<script src="../js/payment.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/payment.js"></script>
 </body>
 </html>

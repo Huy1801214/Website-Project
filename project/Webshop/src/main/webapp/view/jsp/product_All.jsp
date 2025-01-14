@@ -288,15 +288,6 @@
                         <div class="product-code" id="modalProductCode"></div>
                         <div class="product-price mb-3" id="modalProductPrice"></div>
 
-                        <div class="mb-3">
-                            <h6>Kích cỡ</h6>
-                            <div class="size-options">
-                                <div class="size-box" data-size="S">S</div>
-                                <div class="size-box" data-size="M">M</div>
-                                <div class="size-box" data-size="L">L</div>
-                            </div>
-                        </div>
-
                         <button class="btn btn-primary add-to-cart-btn">THÊM VÀO GIỎ</button>
                         <div class="text-center mt-2">
                                 <a href="#" class="view-detail-link">hoặc Xem chi tiết</a>

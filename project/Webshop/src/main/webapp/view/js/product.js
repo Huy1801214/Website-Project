@@ -47,11 +47,16 @@ productContainer.addEventListener('mousemove', (e) => {
 });
 
 function selectSize(button) {
-    // Lấy tất cả các nút size
+    // Loại bỏ selected class của các button khác
     const sizeButtons = document.querySelectorAll('.size-button');
-    sizeButtons.forEach(btn => {
-        btn.classList.remove('active');
-    });
+    sizeButtons.forEach(btn => btn.classList.remove('selected'));
 
-    button.classList.add('active');
+    // Thêm class selected vào button được chọn
+    button.classList.add('selected');
+    // Lấy `product_op_id` từ `data-option-id`
+    const selectedOptionId = button.getAttribute('data-option-id');
+    // Gán vào input hidden
+    document.getElementById('selected_product_op_id').value = selectedOptionId;
+
+    console.log("Selected Option ID:", selectedOptionId); // Debug
 }
